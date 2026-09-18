@@ -1,9 +1,3 @@
-```sh
-Utilize o site <https://www.toptal.com/developers/gitignore> para gerar seu arquivo gitignore e apague este campo.
-
-Vide tutoriais do PI.
-```
-
 # FECAP - Fundação de Comércio Álvares Penteado
 
 <p align="center">
@@ -14,7 +8,7 @@ Vide tutoriais do PI.
 
 ## Nome do Grupo
 
-## Integrantes: <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a>
+## Integrantes: <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/victorbarq/">Dr. Victor Von Doom</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Saitama</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Strange</a>, <a href="https://www.linkedin.com/in/victorbarq/">Me. Yoda</a>, <a href="https://www.linkedin.com/in/victorbarq/">Dr. Gero</a>
 
