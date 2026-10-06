@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float velocidade = 5f;
     public float forcaPulo = 5f;
     public float gravidade = -9.8f;
+    public float velocidadeCorrida = 15f;
 
     private float velocidadeVertical = 0f;
     private CharacterController controller;
@@ -45,9 +46,13 @@ public class PlayerMovement : MonoBehaviour
             x = 1f;
         }
 
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        // Define qual velocidade será usada
+        float velocidadeAtual = velocidade;
+
+        // Se apertar Shift, usa a velocidade de corrida
+        if (Keyboard.current.leftShiftKey.isPressed)
         {
-            transform.position = transform.position + new Vector3(0f, 1f, 0f);
+            velocidadeAtual = velocidadeCorrida;
         }
 
         // Verifica se o personagem está no chão
@@ -65,11 +70,11 @@ public class PlayerMovement : MonoBehaviour
         // Gravidade
         velocidadeVertical = velocidadeVertical + gravidade * Time.deltaTime;
 
-        // Movimento completo: esquerda/direita + frente/trás + altura
+        // Agora usa velocidadeAtual
         Vector3 movimento = new Vector3(
-            x * velocidade,
+            x * velocidadeAtual,
             velocidadeVertical,
-            z * velocidade
+            z * velocidadeAtual
         );
 
         // Move o personagem
