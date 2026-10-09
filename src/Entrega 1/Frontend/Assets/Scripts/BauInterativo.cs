@@ -7,20 +7,37 @@ public class BauInterativo : MonoBehaviour
     public float distanciaInteracao = 2f;
     public bool contemCartao = false;
 
+    public MensagemUI mensagemUI;
+    public ObjetivoUI objetivoUI;
+
     private bool aberto = false;
+    private bool estavaPerto = false;
 
     void Update()
     {
-        float distancia = Vector3.Distance(transform.position, jogador.position);
+        float distancia = Vector3.Distance(
+            transform.position,
+            jogador.position
+        );
 
+        bool estaPerto = distancia <= distanciaInteracao && aberto == false;
 
-        if (distancia <= distanciaInteracao)
+        if (estaPerto == true)
         {
-            if (Keyboard.current.eKey.wasPressedThisFrame && aberto == false)
+            mensagemUI.MostrarMensagem("Pressione E para abrir");
+
+            if (Keyboard.current.eKey.wasPressedThisFrame)
             {
                 AbrirBau();
             }
         }
+
+        if (estaPerto == false && estavaPerto == true)
+        {
+            mensagemUI.LimparMensagem();
+        }
+
+        estavaPerto = estaPerto;
     }
 
     void AbrirBau()
@@ -29,15 +46,18 @@ public class BauInterativo : MonoBehaviour
 
         if (contemCartao == true)
         {
-            InventarioJogador inventario = jogador.GetComponent<InventarioJogador>();
+            InventarioJogador inventario =
+                jogador.GetComponent<InventarioJogador>();
 
             inventario.temCartao = true;
 
-            Debug.Log("Cartão de acesso encontrado!");
+            mensagemUI.MostrarMensagem("Cartão de acesso encontrado!");
+
+            objetivoUI.CartaoEncontrado();
         }
         else
         {
-            Debug.Log("Baú vazio!");
+            mensagemUI.MostrarMensagem("Baú vazio!");
         }
 
         gameObject.SetActive(false);
