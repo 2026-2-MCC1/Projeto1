@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float velocidade = 5f;
-    public float velocidadeCorrida = 15f;
+    public float velocidadeCorrida = 10f;
     public float forcaPulo = 5f;
     public float gravidade = -9.8f;
 
