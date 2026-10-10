@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\26029678\\Documents\\projeto PI\\Projeto1\\src\\Entrega 1\\tela-menu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\26029678\\documents\\projeto pi\\projeto1\\src\\entrega 1\\tela-menu\\assets\\script\\mainmenumenager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mainmenumenager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainMenuMenager.cs",
+              "DocumentMoniker": "C:\\Users\\26029678\\Documents\\projeto PI\\Projeto1\\src\\Entrega 1\\tela-menu\\Assets\\Script\\MainMenuMenager.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\MainMenuMenager.cs",
+              "ToolTip": "C:\\Users\\26029678\\Documents\\projeto PI\\Projeto1\\src\\Entrega 1\\tela-menu\\Assets\\Script\\MainMenuMenager.cs",
+              "RelativeToolTip": "Assets\\Script\\MainMenuMenager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-08T16:16:25.857Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
