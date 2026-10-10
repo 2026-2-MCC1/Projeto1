@@ -19,12 +19,9 @@
   Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
 </p>
 
+Factory Escape é um jogo 3D de plataforma e aventura desenvolvido na Unity, ambientado em uma fábrica inspirada no universo da Arcor.
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-<br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
-<br><br>
-May the force be with you!
+Na primeira fase, o jogador deve explorar o cenário, superar obstáculos e trechos de parkour, encontrar um cartão de acesso escondido em um dos baús e utilizá-lo para abrir a porta de saída. O jogo possui movimentação em terceira pessoa, corrida, pulo, câmera controlada pelo mouse, obstáculos móveis, sistema de respawn e mensagens de objetivo na tela.
 <br><br>
 
 ## 🛠 Estrutura de pastas
@@ -85,17 +82,43 @@ Encontre o index.html na pasta executáveis e execute-o como uma página WEB (at
 
 ## 💻 Configuração para Desenvolvimento
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
+O projeto foi desenvolvido utilizando a Unity.
 
-Para abrir este projeto você necessita das seguintes ferramentas:
+Para abrir e editar o projeto é necessário:
 
--<a href="https://godotengine.org/download">GODOT</a>
+- Unity 6.3 LTS
+- Unity Hub
+- Visual Studio ou outro editor compatível com C#
 
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-```
+O projeto está localizado em:
+
+`src/Entrega 1/Frontend`
+
+Para executar o projeto, abra a pasta pelo Unity Hub e execute a cena `Jogo` localizada em `Assets/Scenes`.
+
+## 🎮 Progresso - Entrega 1
+
+Na Entrega 1 foi desenvolvida a primeira versão jogável de Factory Escape.
+
+Funcionalidades implementadas:
+
+- Movimentação do jogador com WASD
+- Corrida utilizando Shift
+- Sistema de pulo
+- Câmera em terceira pessoa controlada pelo mouse
+- Obstáculos fixos e móveis
+- Obstáculos com movimento horizontal e vertical
+- Área de parkour
+- Sistema de respawn em caso de queda
+- Sistema de baús interativos
+- Cartão de acesso escondido em um dos baús
+- Sistema de inventário para o cartão
+- Porta final que verifica se o jogador possui o cartão
+- Mensagens de interação na tela
+- Sistema de objetivos da fase
+- Cena principal do jogo
+- Cenas de Menu e Game Over
+- Scripts organizados e comentados
 
 ## 📋 Licença/License
 <a href="https://github.com/2026-2-MCC1/Projeto1">Factory Escape</a> © 2026 by <a href="https://github.com/2026-2-MCC1/Projeto1">André Ananias, Antonie Gabriel, João Vitor e Karine Vicente</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
