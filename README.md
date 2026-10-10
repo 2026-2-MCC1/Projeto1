@@ -27,7 +27,6 @@ A experiência é projetada para ser curta, progressiva e dinâmica, sendo divid
 
 ## 🛠 Estrutura de pastas
 
-## 🛠 Estrutura de pastas
 
 - Raiz
   |--> documentos/
