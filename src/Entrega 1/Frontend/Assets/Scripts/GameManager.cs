@@ -1,8 +1,15 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
+    // Apenas a UI pública para aparecer no Unity
+    public GameObject GameOverUI;
+
+    // Transformada em privada para sumir do Unity (sem quebrar a lógica do script)
+    private GameManager gameManager;
+
     // configuração (aparece no Inspector)
     [SerializeField] private int vidasIniciais = 3;
     [SerializeField] private int minimoProximaFase = 25; // minimo de pontos necessário para conseguir desbloquear a proxima fase
@@ -12,7 +19,8 @@ public class GameManager : MonoBehaviour
     private int vidas, pontuacao;
     private bool jogoAcabou;
     private bool proximaFase;
-    
+    private bool isDead;
+
 
 
     // consulta: outros scripts leem, mas não alteram
@@ -51,8 +59,10 @@ public class GameManager : MonoBehaviour
         vidas -= 1;
         Debug.Log("Vidas: " + vidas);
 
-        if (vidas <= 0)
+        if (vidas <= 0 && !isDead)
         {
+            isDead = true;
+            gameManager.GameOver();
             jogoAcabou = true;
             Debug.Log("Fim de jogo!");
         }
@@ -98,6 +108,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
+    public void GameOver()
+    {
+        GameOverUI.SetActive(true);
+    }
+    public void Reiniciar()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+        Debug.Log("Reiniciando partida...");
+    }
+    public void mainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Debug.Log("Voltando para o menu principal...");
+    }
+    public void Quit ()
+    {
+        Application.Quit();
+        Debug.Log("Saindo do jogo...");
+    }
 }
