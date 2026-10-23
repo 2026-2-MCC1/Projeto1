@@ -12,13 +12,18 @@
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/#/">Eduardo Savino Gomes</a>, <a href="https://www.linkedin.com/in/#/">Luis Fernando dos Santos Pires</a>, <a href="https://www.linkedin.com/in/#/">Renata Muniz Do Nascimento</a>, <a href="https://www.linkedin.com/in/#/">Robson de Oliveira Cardoso</a>, <a href="https://www.linkedin.com/in/#/">Victor Bruno Alexander Rosetti de Quiroz</a>
 
-## Descrição
 
 <p align="center">
-![Banner Factory Escape](imagens/banner_FactoryEscape.jpeg)
-  Game by <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"> CC BY-SA 3.0</a> 
+<img src="imagens/banner_FactoryEscape.jpeg" alt="Banner Factory Escape" width="100%">
+<br>
+Game by <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>,
+<a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>,
+<a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b/">João Vitor</a>,
+<a href="https://www.linkedin.com/in/karine-vicente-87311b231/">Karine Vicente</a>.
+<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>
 </p>
 
+## Descrição
 
 O **Factory Escape** é um jogo de plataforma 3D desenvolvido para aplicação prática dos conceitos de desenvolvimento de jogos. O projeto foca na utilização de mecânicas de movimentação, física, saltos e colisões, tudo ambientado em um cenário industrial temático inspirado na fábrica da Arcor.
 <br><br>
