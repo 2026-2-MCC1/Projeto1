@@ -19,10 +19,6 @@
   Game by<a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"> CC BY-SA 3.0</a> 
 </p>
 
-Factory Escape é um jogo 3D de plataforma e aventura desenvolvido na Unity, ambientado em uma fábrica inspirada no universo da Arcor.
-
-
-Na primeira fase, o jogador deve explorar o cenário, superar obstáculos e trechos de parkour, encontrar um cartão de acesso escondido em um dos baús e utilizá-lo para abrir a porta de saída. O jogo possui movimentação em terceira pessoa, corrida, pulo, câmera controlada pelo mouse, obstáculos móveis, sistema de respawn e mensagens de objetivo na tela.
 =======
 O **Factory Escape** é um jogo de plataforma 3D desenvolvido para aplicação prática dos conceitos de desenvolvimento de jogos. O projeto foca na utilização de mecânicas de movimentação, física, saltos e colisões, tudo ambientado em um cenário industrial temático inspirado na fábrica da Arcor.
 <br><br>
