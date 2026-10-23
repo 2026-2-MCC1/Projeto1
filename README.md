@@ -15,8 +15,8 @@
 ## Descrição
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by<a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"> CC BY-SA 3.0</a> 
+![Banner Factory Escape](imagens/banner_FactoryEscape.jpeg)
+  Game by <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"> CC BY-SA 3.0</a> 
 </p>
 
 
@@ -120,7 +120,6 @@ Para abrir e testar este projeto em sua máquina, você necessita da seguinte fe
 4. Clique no projeto para abri-lo no editor da Unity.
 5. Aguarde a importação dos *assets* e pacotes e pressione o botão de "Play" no topo da tela para testar.
 
->>>>>>> d491698557568307da63c8924c213be02c773df1
 
 ## 📋 Licença/License
 <a href="https://github.com/2026-2-MCC1/Projeto1">Factory Escape</a> © 2026 by <a href="https://github.com/2026-2-MCC1/Projeto1">André Ananias, Antonie Gabriel, João Vitor e Karine Vicente</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
