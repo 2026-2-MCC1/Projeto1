@@ -113,7 +113,7 @@ Funcionalidades implementadas:
 - Cena principal do jogo
 - Cenas de Menu e Game Over
 - Scripts organizados e comentados
-=======
+
 Para abrir e testar este projeto em sua máquina, você necessita da seguinte ferramenta:
 
 - <a href="https://unity.com/download">Unity Hub / Unity Engine</a>
