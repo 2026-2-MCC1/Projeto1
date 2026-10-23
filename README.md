@@ -19,42 +19,40 @@
   Game by<a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"> CC BY-SA 3.0</a> 
 </p>
 
-=======
+
 O **Factory Escape** é um jogo de plataforma 3D desenvolvido para aplicação prática dos conceitos de desenvolvimento de jogos. O projeto foca na utilização de mecânicas de movimentação, física, saltos e colisões, tudo ambientado em um cenário industrial temático inspirado na fábrica da Arcor.
 <br><br>
 A experiência é projetada para ser curta, progressiva e dinâmica, sendo dividida em três fases principais: um tutorial inicial, um desafio de parkour utilizando embalagens gigantes da 7Belo e uma intensa sequência de fuga com câmera frontal. A premissa coloca o jogador em seu primeiro dia de trabalho em uma avaliação de rotina que acaba resultando em um desastre após o colapso da caldeira principal, exigindo que o protagonista pule, desvie e corra para sobreviver e escapar da fábrica.
->>>>>>> d491698557568307da63c8924c213be02c773df1
 <br><br>
 
-## 🛠 Estrutura de pastas
+## 🛠️ Estrutura de pastas
 
+```text
+Raiz/
+├── documentos/
+│   ├── Entrega 1/
+│   │   ├── Algoritmos e Lógica de Programação/
+│   │   ├── Calculo 1/
+│   │   ├── Jogos Digitais e Sistemas Digitais Interativos/
+│   │   ├── Projeto Interdisciplinar - Jogos Digitais/
+│   │   │   └── GDD.pdf
+│   │   └── Ética e Pensamento Computacional/
+│   └── Entrega 2/
+├── imagens/
+├── src/
+│   ├── Entrega 1/
+│   │   ├── Backend/
+│   │   └── Frontend/
+│   │       ├── Assets/
+│   │       ├── Packages/
+│   │       ├── ProjectSettings/
+│   │       └── .gitignore
+│   └── Entrega 2/
+├── .gitignore
+└── README.md
+```
 
-- Raiz
-  |--> documentos/
-  |    |--> Entrega 1/
-  |    |    |--> Algoritmos e Lógica de Programação/
-  |    |    |--> Calculo 1/
-  |    |    |--> Jogos Digitais e Sistemas Digitais Interativos/
-  |    |    |--> Projeto Interdisciplinar - Jogos Digitais/
-  |    |    |    |-- GDD.pdf
-  |    |    |--> Ética e Pensamento Computacional/
-  |    |--> Entrega 2/
-  |--> imagens/
-  |--> src/
-  |    |--> Entrega 1/
-  |    |    |--> Backend/
-  |    |    |--> Frontend/
-  |    |    |    |--> Assets/
-  |    |    |    |--> Packages/
-  |    |    |    |--> ProjectSettings/
-  |    |    |    |-- .gitignore
-  |    |--> Entrega 2/
-  |-- .gitignore
-  |-- README.md
-
-A pasta raiz contem dois arquivos que devem ser alterados:
-
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
+<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre nosso projeto. O mesmo que você está lendo agora.
 
 Há também 4 pastas que seguem da seguinte forma:
 
