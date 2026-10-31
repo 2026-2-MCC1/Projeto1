@@ -6,10 +6,13 @@ public class ObjetivoUI : MonoBehaviour
     // Texto usado para mostrar o objetivo atual da fase
     public TMP_Text textoObjetivo;
 
+    // Primeiro objetivo mostrado na fase
+    public string objetivoInicial = "Objetivo: Encontre o cartão de acesso";
+
     void Start()
     {
         // Define o primeiro objetivo quando a fase começa
-        textoObjetivo.text = "Objetivo: Encontre o cartão de acesso";
+        textoObjetivo.text = objetivoInicial;
     }
 
     public void CartaoEncontrado()
