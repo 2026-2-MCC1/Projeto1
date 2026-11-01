@@ -3,11 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Velocidade normal do jogador
-    public float velocidade = 5f;
-
-    // Velocidade usada quando o jogador corre
-    public float velocidadeCorrida = 10f;
+    // Velocidade do jogador, sempre a mesma, como no Crash
+    public float velocidadeAndar = 6.5f;
 
     // Força aplicada no pulo
     public float forcaPulo = 5f;
@@ -15,8 +12,17 @@ public class PlayerMovement : MonoBehaviour
     // Valor usado para simular a gravidade
     public float gravidade = -9.8f;
 
+    // Velocidade com que o jogador vira para a direção do movimento, em graus por segundo
+    public float velocidadeGiro = 540f;
+
+    // Rapidez com que o jogador ganha e perde velocidade
+    public float aceleracao = 30f;
+
     // Guarda a velocidade vertical do jogador
     private float velocidadeVertical = 0f;
+
+    // Guarda a velocidade horizontal atual, que muda aos poucos
+    private Vector3 velocidadeHorizontal = Vector3.zero;
 
     // Referência ao CharacterController do jogador
     private CharacterController controller;
@@ -63,15 +69,6 @@ public class PlayerMovement : MonoBehaviour
             x = 1f;
         }
 
-        // Define a velocidade normal como padrão
-        float velocidadeAtual = velocidade;
-
-        // Se Shift estiver pressionado, o jogador corre
-        if (Keyboard.current.leftShiftKey.isPressed)
-        {
-            velocidadeAtual = velocidadeCorrida;
-        }
-
         // Mantém o jogador próximo ao chão
         if (controller.isGrounded && velocidadeVertical < 0)
         {
@@ -108,15 +105,27 @@ public class PlayerMovement : MonoBehaviour
             direcao.Normalize();
         }
 
-        // Faz o jogador virar para a direção em que está andando
+        // Faz o jogador virar aos poucos para a direção em que está andando
         if (direcao != Vector3.zero)
         {
-            transform.forward = direcao;
+            Quaternion rotacaoAlvo = Quaternion.LookRotation(direcao);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                rotacaoAlvo,
+                velocidadeGiro * Time.deltaTime
+            );
         }
+
+        // Aproxima a velocidade atual da velocidade desejada, sem mudança brusca
+        velocidadeHorizontal = Vector3.MoveTowards(
+            velocidadeHorizontal,
+            direcao * velocidadeAndar,
+            aceleracao * Time.deltaTime
+        );
 
         // Junta o movimento horizontal com o movimento vertical
         Vector3 movimento =
-            direcao * velocidadeAtual +
+            velocidadeHorizontal +
             Vector3.up * velocidadeVertical;
 
         // Move o jogador

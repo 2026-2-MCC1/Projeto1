@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -6,9 +5,6 @@ public class GameManager : MonoBehaviour
 {
     // Apenas a UI pública para aparecer no Unity
     public GameObject GameOverUI;
-
-    // Transformada em privada para sumir do Unity (sem quebrar a lógica do script)
-    private GameManager gameManager;
 
     // configuração (aparece no Inspector)
     [SerializeField] private int vidasIniciais = 3;
@@ -62,7 +58,7 @@ public class GameManager : MonoBehaviour
         if (vidas <= 0 && !isDead)
         {
             isDead = true;
-            gameManager.GameOver();
+            GameOver();
             jogoAcabou = true;
             Debug.Log("Fim de jogo!");
         }
