@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     }
     public void mainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuOpcoes");
         Debug.Log("Voltando para o menu principal...");
     }
     public void Quit ()
