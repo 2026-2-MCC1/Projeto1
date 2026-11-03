@@ -21,35 +21,26 @@ public class GeradorArvores : MonoBehaviour
     public float velocidadeMinima = 5f;
     public float velocidadeMaxima = 8f;
 
-    // Só solta árvores com o jogador por perto
-    public float distanciaAtiva = 70f;
-
+    // Vira true quando o jogador passa pelo trigger FimArvores (topo da rampa)
+    private bool parado = false;
     private float espera = 1f;
-    private Transform jogador;
 
-    void Start()
+    // Chamado pelo FimArvores: o jogador já passou, não precisa mais soltar árvores
+    public void Parar()
     {
-        PlayerMovement movimento = FindFirstObjectByType<PlayerMovement>();
-        if (movimento != null)
-        {
-            jogador = movimento.transform;
-        }
+        parado = true;
+        enabled = false;
     }
 
     void Update()
     {
         espera -= Time.deltaTime;
-        if (espera > 0f || prefabArvore == null)
+        if (parado || espera > 0f || prefabArvore == null)
         {
             return;
         }
 
         espera = Random.Range(intervaloMinimo, intervaloMaximo);
-
-        if (jogador != null && Vector3.Distance(jogador.position, transform.position) > distanciaAtiva)
-        {
-            return;
-        }
 
         Vector3 lateral = Vector3.Cross(Vector3.up, transform.forward).normalized;
         float desvio = Random.Range(-larguraNascer, larguraNascer);
