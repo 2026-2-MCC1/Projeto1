@@ -7,9 +7,14 @@ using UnityEngine.InputSystem;
 // Outros scripts também podem chamar Destruir() diretamente.
 public class CaixaDestrutivel : MonoBehaviour
 {
+    // Soltar rocklets ao quebrar uma caixa
+    public GameObject[] rockletsParaSoltar; 
+    public int minimoRocklets = 2;
+    public int maximoRocklets = 5;
+
     // Tecla do giro e distância em que ele alcança a caixa
     public Key teclaGiro = Key.Q;
-    public float distanciaGiro = 1.8f;
+    public float distanciaGiro = 2.0f;
 
     // Em quantas partes a caixa é cortada em cada eixo
     public int divisoes = 3;
@@ -33,6 +38,7 @@ public class CaixaDestrutivel : MonoBehaviour
     private Renderer rendererCaixa;
     private Collider colisorCaixa;
     private CharacterController jogador;
+    private InventarioJogador inventario;
 
     // Dados de cada pedaço enquanto ele voa
     private class Pedaco
@@ -53,6 +59,7 @@ public class CaixaDestrutivel : MonoBehaviour
         PlayerMovement movimento = FindFirstObjectByType<PlayerMovement>();
         if (movimento != null)
         {
+            inventario = movimento.GetComponent<InventarioJogador>();
             jogador = movimento.GetComponent<CharacterController>();
         }
     }
@@ -94,6 +101,23 @@ public class CaixaDestrutivel : MonoBehaviour
             Destruir();
         }
     }
+    void SoltarRocklets()
+    {
+        if (rockletsParaSoltar == null || rockletsParaSoltar.Length == 0) return;
+
+        int quantidade = Random.Range(minimoRocklets, maximoRocklets + 1);
+        for (int i = 0; i < quantidade; i++)
+        {
+            GameObject prefab = rockletsParaSoltar[Random.Range(0, rockletsParaSoltar.Length)];
+            Vector3 desvio = new Vector3(Random.Range(-0.8f, 0.8f), 0.5f, Random.Range(-0.8f, 0.8f));
+            GameObject r = Instantiate(prefab, transform.position + desvio, Quaternion.identity);
+            r.GetComponent<Collider>().enabled = false;   // não conta pelo trigger
+            if (inventario != null)
+            {
+                inventario.ColetarVoando(r.transform, i * 0.08f);
+            }
+        }
+    }
 
     public void Destruir()
     {
@@ -103,11 +127,13 @@ public class CaixaDestrutivel : MonoBehaviour
         }
 
         destruida = true;
+        SoltarRocklets();
 
         // Libera a passagem na hora, antes mesmo dos pedaços aparecerem
         colisorCaixa.enabled = false;
         StartCoroutine(AnimarDestruicao());
     }
+
 
     IEnumerator AnimarDestruicao()
     {
@@ -404,6 +430,12 @@ public class CaixaDestrutivel : MonoBehaviour
     {
         foreach (Collider outro in Physics.OverlapSphere(colisorCaixa.bounds.center, raioExplosao))
         {
+            // jogador dentro da explosão perde um casco
+            if (outro == jogador && inventario != null)
+            {
+                inventario.PerderVida();
+            }
+
             CaixaDestrutivel caixa = outro.GetComponent<CaixaDestrutivel>();
             if (caixa != null && caixa != this)
             {

@@ -125,3 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aade1c1362484ed9bb2a1050da808fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaixaDestrutivel
+  rockletsParaSoltar:
+  - {fileID: 1802309828262342435, guid: 75b5d477d51458c4798d6b3e27097dad, type: 3}
+  - {fileID: 5931092011889959229, guid: bc197f1aa19817c4aa0c5810b81c27c7, type: 3}
+  - {fileID: 2977259025599438332, guid: 07d9fe54814fc7641938b5e6dfca3bf0, type: 3}
+  - {fileID: 8829217577706902700, guid: f8f977f54014c71499e996e7d1958d4a, type: 3}
+  minimoRocklets: 2
+  maximoRocklets: 5
+  teclaGiro: 31
+  distanciaGiro: 2
+  divisoes: 3
+  forcaLateral: 3.5
+  forcaCima: 4.5
+  gravidade: 14
+  duracao: 1.1
+  explosiva: 0
+  raioExplosao: 2
+  materialBrilho: {fileID: 0}
