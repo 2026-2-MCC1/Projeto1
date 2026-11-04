@@ -4,18 +4,14 @@ using TMPro;
 using UnityEngine;
 
 // HUD da fase: vidas (cascos), tempo da partida (conta a partir de 00:00) e Rocklets coletados.
-// Só LÊ o GameManager (Vidas e Pontuacao); quem muda os valores continua sendo ele.
+// Só LÊ o InventarioJogador do Player (Vidas e Rocklets); quem muda os valores é ele.
 public class HUDJogo : MonoBehaviour
 {
-    [Header("Referências")]
-    [SerializeField] private GameManager gameManager;
-
     [Header("Vidas")]
     [SerializeField] private Transform containerCascos;
     [SerializeField] private UnityEngine.UI.Image modeloCasco;   // casco usado como molde
     [SerializeField] private Sprite cascoCheio;
     [SerializeField] private Sprite cascoVazio;
-    [SerializeField] private int vidasSemGameManager = 3;        // só para testar a cena sem GameManager
 
     [Header("Tempo")]
     [SerializeField] private TMP_Text textoTempo;
@@ -26,7 +22,8 @@ public class HUDJogo : MonoBehaviour
     [SerializeField] private TMP_Text textoMeta;                  // "18 / 25"
     [SerializeField] private UnityEngine.UI.Image barraDoces;     // Image tipo Filled
     [SerializeField] private RectTransform iconeDoces;            // pula quando pega um Rocklet
-    [SerializeField] private int metaDoces = 25;                  // igual ao minimoProximaFase do GameManager
+    [SerializeField] private int metaDoces = 25;
+    [SerializeField] private InventarioJogador inventario;
 
     private readonly List<UnityEngine.UI.Image> cascos = new List<UnityEngine.UI.Image>();
     private int ultimasVidas = -1;
@@ -38,13 +35,13 @@ public class HUDJogo : MonoBehaviour
 
     void Start()
     {
-        if (gameManager == null)
+        if (inventario == null)
         {
-            gameManager = FindFirstObjectByType<GameManager>();
+            inventario = FindFirstObjectByType<InventarioJogador>();
         }
 
         tempoDecorrido = 0f;
-        MontarCascos(gameManager != null ? gameManager.Vidas : vidasSemGameManager);
+        MontarCascos(inventario != null ? inventario.Vidas : 3);
         AtualizarTudo(true);
     }
 
@@ -135,9 +132,8 @@ public class HUDJogo : MonoBehaviour
 
     private void AtualizarTudo(bool inicio)
     {
-        int vidas = gameManager != null ? gameManager.Vidas : vidasSemGameManager;
-        int pontos = gameManager != null ? gameManager.Pontuacao : 0;
-
+        int vidas = inventario != null ? inventario.Vidas : 3;
+        int pontos = inventario != null ? inventario.Rocklets : 0;
         if (vidas != ultimasVidas)
         {
             AtualizarVidas(vidas, inicio);
