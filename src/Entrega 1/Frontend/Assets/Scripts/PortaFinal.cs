@@ -12,6 +12,9 @@ public class PortaFinal : MonoBehaviour
     // Referência para mostrar mensagens na tela
     public MensagemUI mensagemUI;
 
+    // Quantidade de Rocklets necessária para abrir a porta
+    public int metaRocklets = 12;
+
     // Guarda se o jogador estava perto da porta no frame anterior
     private bool estavaPerto = false;
 
@@ -58,7 +61,20 @@ public class PortaFinal : MonoBehaviour
             jogador.GetComponent<InventarioJogador>();
 
         // Verifica se o jogador possui o cartão de acesso
-        if (inventario.temCartao == true)
+        if (inventario.temCartao == false)
+        {
+            // Informa que o jogador ainda precisa encontrar o cartão
+            MostrarAviso("Você precisa encontrar o cartão de acesso!");
+        }
+        else if (inventario.Rocklets < metaRocklets)
+        {
+            // Calcula quantos Rocklets ainda faltam
+            int faltam = metaRocklets - inventario.Rocklets;
+
+            // Informa quantos Rocklets ainda faltam
+            MostrarAviso("Faltam " + faltam + " Rocklets para abrir a porta!");
+        }
+        else
         {
             // Informa que a fase foi concluída
             mensagemUI.MostrarMensagem("Porta aberta! Fase concluída!");
@@ -66,19 +82,18 @@ public class PortaFinal : MonoBehaviour
             // Desativa a porta
             gameObject.SetActive(false);
         }
-        else
-        {
-            // Impede que outra mensagem substitua o aviso imediatamente
-            mensagemTemporaria = true;
+    }
 
-            // Informa que o jogador ainda precisa encontrar o cartão
-            mensagemUI.MostrarMensagem(
-                "Você precisa encontrar o cartão de acesso!"
-            );
+    void MostrarAviso(string aviso)
+    {
+        // Impede que outra mensagem substitua o aviso imediatamente
+        mensagemTemporaria = true;
 
-            // Após 2 segundos, libera novamente a mensagem padrão da porta
-            Invoke("LiberarMensagem", 2f);
-        }
+        // Mostra o aviso na tela
+        mensagemUI.MostrarMensagem(aviso);
+
+        // Após 2 segundos, libera novamente a mensagem padrão da porta
+        Invoke("LiberarMensagem", 2f);
     }
 
     void LiberarMensagem()

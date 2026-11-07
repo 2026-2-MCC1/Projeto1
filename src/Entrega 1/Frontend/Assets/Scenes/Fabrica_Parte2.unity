@@ -639,12 +639,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 467536707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f08db22fd293056a3170fab23d90fbac, type: 3}
+  m_Script: {fileID: 11500000, guid: fd5ece01c8fe25748b5708852881fdd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckpointFase
   alturaRespawn: 1.25
   marcador: {fileID: 548678869}
   materialAtivo: {fileID: 2100000, guid: 90624fe36b82e6c9d82fb0f1423674a6, type: 2}
+  som: {fileID: 8300000, guid: 48c4c7a8a663f96673e9e84e5d481589, type: 3}
+  volume: 0.8
 --- !u!23 &101618658
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2461,7 +2463,6 @@ GameObject:
   - component: {fileID: 211125947}
   - component: {fileID: 211125945}
   - component: {fileID: 211125950}
-  - component: {fileID: 211125951}
   - component: {fileID: 211125952}
   - component: {fileID: 470827150}
   m_Layer: 0
@@ -2587,20 +2588,6 @@ MonoBehaviour:
   gravidade: -9.8
   velocidadeGiro: 540
   aceleracao: 30
---- !u!114 &211125951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211125944}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42299ec2e224ee2438d62080e26e17ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ResetQueda
-  pontoRespawn: {fileID: 29039898}
-  limiteQueda: -9.5
 --- !u!114 &211125952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2615,6 +2602,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventarioJogador
   temCartao: 0
   iconeRocklets: {fileID: 0}
+  somRocklet: {fileID: 8300000, guid: c3f109f4582955f23295be4837b4af2a, type: 3}
+  volumeRocklet: 0.6
   vidasIniciais: 3
 --- !u!1 &212168513
 GameObject:
@@ -4780,7 +4769,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1881636742}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3faa8e879eaa7234ad5cfbc1d74bd1c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab181f4ba9f4241489dea16c1076687d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perigo
   som: {fileID: 8300000, guid: 21bade026a6ae768f2ed66ffdcc99396, type: 3}
@@ -8237,11 +8226,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 211125944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32833106536e95df40b2d002cc92d33d, type: 3}
+  m_Script: {fileID: 11500000, guid: 559773d5732958f40a0b2410a551e93a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RespawnJogador
   pontoInicial: {fileID: 29039898}
   limiteQueda: -9.5
+  quedaTiraVida: 1
+  mensagem: {fileID: 1014695145}
 --- !u!1 &471451149
 GameObject:
   m_ObjectHideFlags: 0
@@ -8269,7 +8260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054568718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3faa8e879eaa7234ad5cfbc1d74bd1c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab181f4ba9f4241489dea16c1076687d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perigo
   som: {fileID: 8300000, guid: 21bade026a6ae768f2ed66ffdcc99396, type: 3}
@@ -8445,7 +8436,6 @@ Transform:
   - {fileID: 832575519}
   - {fileID: 211125949}
   - {fileID: 50799156}
-  - {fileID: 1689935378}
   - {fileID: 1064221098}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8461,7 +8451,6 @@ GameObject:
   - component: {fileID: 478427392}
   - component: {fileID: 478427391}
   - component: {fileID: 478427390}
-  - component: {fileID: 478427389}
   m_Layer: 0
   m_Name: PortaFinal
   m_TagString: Untagged
@@ -8484,21 +8473,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1548055023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &478427389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 478427387}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3a65a458695fbd40a185c32f3f44af5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PortaFinal
-  jogador: {fileID: 0}
-  distanciaInteracao: 3
-  mensagemUI: {fileID: 0}
 --- !u!65 &478427390
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15462,10 +15436,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1505869759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f453a0ef5097b4fd5de6e91074206e2, type: 3}
+  m_Script: {fileID: 11500000, guid: c2a6325a2e6316a44800d6493c438ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PortalFase
   proximaCena: 
+  metaRocklets: 25
+  jogador: {fileID: 470827150}
+  hud: {fileID: 1427316713}
+  partesPortal:
+  - {fileID: 1666632724}
+  - {fileID: 1463252222}
+  - {fileID: 677301022}
+  - {fileID: 271280408}
+  materialDesligado: {fileID: 2100000, guid: e0ef7b00ba95402ddfcefd2e6fceea00, type: 2}
+  materialLigado: {fileID: 2100000, guid: cd73de0081a0ba056ce9da661dcf884c, type: 2}
+  somAbrir: {fileID: 8300000, guid: 247c6beb2a12166c6984b1c36f2ae9cc, type: 3}
 --- !u!4 &883483599
 Transform:
   m_ObjectHideFlags: 0
@@ -16481,7 +16466,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1793135681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3faa8e879eaa7234ad5cfbc1d74bd1c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab181f4ba9f4241489dea16c1076687d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perigo
   som: {fileID: 8300000, guid: 21bade026a6ae768f2ed66ffdcc99396, type: 3}
@@ -28987,7 +28972,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1588307339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3faa8e879eaa7234ad5cfbc1d74bd1c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab181f4ba9f4241489dea16c1076687d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perigo
   som: {fileID: 8300000, guid: 21bade026a6ae768f2ed66ffdcc99396, type: 3}
@@ -30056,52 +30041,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1538285611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1689935377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1689935378}
-  - component: {fileID: 1689935379}
-  m_Layer: 0
-  m_Name: RespawnParkour
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1689935378
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689935377}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: -8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 474515593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1689935379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689935377}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42299ec2e224ee2438d62080e26e17ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ResetQueda
-  pontoRespawn: {fileID: 0}
-  limiteQueda: -5
 --- !u!114 &1691532179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31710,7 +31649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjetivoUI
   textoObjetivo: {fileID: 473408107}
-  objetivoInicial: "Objetivo: Chegue at\xE9 o portal."
+  objetivoInicial: "Objetivo: Colete 25 Rocklets e chegue at\xE9 o portal."
 --- !u!33 &1760596702
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32965,7 +32904,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 958935360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3faa8e879eaa7234ad5cfbc1d74bd1c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab181f4ba9f4241489dea16c1076687d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perigo
   som: {fileID: 8300000, guid: 21bade026a6ae768f2ed66ffdcc99396, type: 3}
@@ -34852,7 +34791,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1453490938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3faa8e879eaa7234ad5cfbc1d74bd1c, type: 3}
+  m_Script: {fileID: 11500000, guid: ab181f4ba9f4241489dea16c1076687d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perigo
   som: {fileID: 8300000, guid: 21bade026a6ae768f2ed66ffdcc99396, type: 3}

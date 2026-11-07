@@ -12,6 +12,9 @@ public class BauInterativo : MonoBehaviour
     // Define se este baú possui ou não o cartão de acesso
     public bool contemCartao = false;
 
+    // Mensagem (dica) que aparece quando o baú está vazio
+    public string mensagemVazio = "Baú vazio!";
+
     // Referências para atualizar as mensagens e o objetivo na tela
     public MensagemUI mensagemUI;
     public ObjetivoUI objetivoUI;
@@ -79,7 +82,7 @@ public class BauInterativo : MonoBehaviour
         else
         {
             // Caso o baú não tenha o cartão
-            mensagemUI.MostrarMensagem("Baú vazio!");
+            mensagemUI.MostrarMensagem(mensagemVazio);
         }
 
         // Desativa o baú depois que ele é aberto

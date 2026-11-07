@@ -8,6 +8,10 @@ public class InventarioJogador : MonoBehaviour
 
     public RectTransform iconeRocklets;
 
+    // Som quando o jogador pega um Rocklet
+    public AudioClip somRocklet;
+    public float volumeRocklet = 0.6f;
+
     public void ColetarVoando(Transform item, float atraso)
     {
         StartCoroutine(VoarParaHud(item, atraso));
@@ -41,6 +45,7 @@ public class InventarioJogador : MonoBehaviour
         }
 
         rocklets++;
+        TocarSomRocklet();
         Destroy(item.gameObject);
     }
 
@@ -56,6 +61,28 @@ public class InventarioJogador : MonoBehaviour
     void Awake()
     {
         vidas = vidasIniciais;
+
+        // Se o som não foi colocado no Inspector, pega o "SomRocklet" da pasta Resources.
+        if (somRocklet == null)
+        {
+            somRocklet = Resources.Load<AudioClip>("SomRocklet");
+        }
+    }
+
+    // Toca o som do Rocklet usando o RespawnJogador (que também fica no Player).
+    // Se não tiver RespawnJogador (fase 1), toca direto.
+    void TocarSomRocklet()
+    {
+        RespawnJogador jogador = GetComponent<RespawnJogador>();
+        if (jogador != null)
+        {
+            jogador.TocarSom(somRocklet, volumeRocklet);
+        }
+        else if (somRocklet != null)
+        {
+            // Na fase 1 não tem RespawnJogador: toca o som perto da câmera
+            AudioSource.PlayClipAtPoint(somRocklet, Camera.main.transform.position, volumeRocklet);
+        }
     }
 
     public void PerderVida()
@@ -71,6 +98,7 @@ public class InventarioJogador : MonoBehaviour
         if (other.CompareTag("Rocklet"))
         {
             rocklets++;
+            TocarSomRocklet();
             Destroy(other.gameObject);
         }
     }

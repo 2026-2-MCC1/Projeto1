@@ -7,7 +7,7 @@ public class ObstaculoVaiEVem : MonoBehaviour
     public Vector3 direcao = new Vector3(1, 0, 0); // para onde ele anda
     public float distancia = 2.8f;   // quanto ele anda para cada lado a partir do ponto inicial
     public float velocidade = 3f;    // metros por segundo
-    public float comecarEm = 0f;     // posição inicial entre -distancia e +distancia (para os obstáculos não andarem juntos)
+    public float comecarEm = 0f;     // posição inicial entre -distancia e +distancia
 
     private Vector3 pontoInicial;
     private float deslocamento;      // quanto ele já andou a partir do ponto inicial

@@ -7,8 +7,19 @@ public class CheckpointFase : MonoBehaviour
     public float alturaRespawn = 1.25f; // altura acima do chão em que o jogador reaparece
     public Renderer marcador;           // o disco no chão que muda de cor
     public Material materialAtivo;      // cor do disco depois de ativado
+    public AudioClip som;               // som que toca quando o checkpoint é ativado
+    public float volume = 0.8f;
 
     private bool ativado = false;
+
+    void Start()
+    {
+        // Se o som não foi colocado no Inspector, pega o "SomCheckpoint" da pasta Resources.
+        if (som == null)
+        {
+            som = Resources.Load<AudioClip>("SomCheckpoint");
+        }
+    }
 
     void OnTriggerEnter(Collider outro)
     {
@@ -28,6 +39,8 @@ public class CheckpointFase : MonoBehaviour
 
             ativado = true;
             TrocarCor();
+            jogador.TocarSom(som, volume);
+            jogador.MostrarMensagem("Checkpoint salvo!");
         }
     }
 

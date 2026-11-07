@@ -18,6 +18,6 @@ public class ObjetivoUI : MonoBehaviour
     public void CartaoEncontrado()
     {
         // Atualiza o objetivo depois que o jogador encontra o cartão
-        textoObjetivo.text = "Objetivo: Vá até a porta de saída";
+        textoObjetivo.text = "Objetivo: Vá até a porta com 12 Rocklets";
     }
 }
