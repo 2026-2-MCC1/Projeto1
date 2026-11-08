@@ -6,18 +6,13 @@ namespace FactoryEscape
 {
     public enum FEScreen { Menu, Options, Credits, Tutorial, GameOver, Victory, End }
 
-    // =====================================================================
-    //  FactoryEscapeScreen - coloque UM destes em cada cena de tela
-    //  e escolha qual tela ela é no campo "Screen".
-    //  A interface, o fundo animado e os sons são criados sozinhos.
-    // =====================================================================
     public class FactoryEscapeScreen : MonoBehaviour
     {
         [Header("Qual tela é esta cena?")]
         public FEScreen screen = FEScreen.Menu;
 
         [Header("Visual (opcional)")]
-        public Texture backgroundTexture;   // sua imagem de fundo (Wrap Mode = Repeat)
+        public Texture backgroundTexture;  
         public Font customFont;             // dica: uma fonte arredondada (ex.: Fredoka)
         public Vector2 scrollSpeed = new Vector2(0.03f, 0.004f);
         public int bubbleCount = 16;
@@ -36,16 +31,16 @@ namespace FactoryEscape
             "MOVER ............ WASD / SETAS\n" +
             "PULAR ............ ESPAÇO\n" +
             "INTERAGIR ........ E\n\n" +
-            "SUA MISSÃO: ache as chaves, desvie das máquinas\n" +
+            "SUA MISSÃO: colete os doces e baus, desvie dos monstros\n" +
             "e chegue à saída antes que o alarme toque!\n" +
             "São 3 fases. Consegue escapar de todas?";
 
         [TextArea(4, 12)]
         public string creditsText =
             "FACTORY ESCAPE\n\n" +
-            "Programação ...... SEU NOME\n" +
-            "Arte ............. SEU NOME\n" +
-            "Som .............. SEU NOME\n\n" +
+            "Programação ...... André Ananias, Antonie Gabriel, Karine Vicente e João Vitor\n" +
+            "Arte ............. André Ananias, Antonie Gabriel e Karine Vicente\n" +
+            "Som .............. André Ananias e Antonie Gabriel\n\n" +
             "Projeto acadêmico ambientado em uma fábrica da Arcor.";
 
         Transform root;
@@ -55,7 +50,11 @@ namespace FactoryEscape
         void Awake()
         {
             Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.None;   // libera o mouse (o jogo pode tê-lo travado)
+            Cursor.visible = true;
             GameFlow.ApplyVolume();
+            customFont = Resources.Load<Font>("Fonts/FredokaOne-Regular");
+
             FEKit.Init(customFont);
             FESfx.SetOverrides(clickSound, hoverSound, victorySound, gameOverSound, sfxVolume);
             FEKit.EnsureEventSystem();
@@ -87,6 +86,11 @@ namespace FactoryEscape
 
         void Update()
         {
+            // Mantém o mouse livre: se algum script do jogo (câmera, controle do jogador)
+            // travar o cursor de novo, a tela destrava na hora.
+            if (Cursor.lockState != CursorLockMode.None) Cursor.lockState = CursorLockMode.None;
+            if (!Cursor.visible) Cursor.visible = true;
+
             if (screen == FEScreen.Tutorial && FEKit.ConfirmPressed())
                 GameFlow.StartLevel();
         }
@@ -123,7 +127,17 @@ namespace FactoryEscape
         void BuildCredits()
         {
             Header("CRÉDITOS");
-            T(creditsText, 38, Color.white, 126, -300, FontStyle.Normal, 1000, true);
+
+            string textoCreditos =
+                "FACTORY ESCAPE\n\n" +
+                "Programação ...... André Ananias, Antonie Gabriel, Karine Vicente e João Vitor\n" +
+                "Arte ............. André Ananias, Antonie Gabriel e Karine Vicente\n" +
+                "Som .............. André Ananias e Antonie Gabriel\n\n" +
+                "Projeto acadêmico ambientado em uma fábrica da Arcor.";
+
+            T(textoCreditos, 38, Color.white, 126, -300,
+              FontStyle.Normal, 1000, true);
+
             B("VOLTAR", 56, 120, -860, GameFlow.GoMenu);
         }
 
@@ -139,7 +153,7 @@ namespace FactoryEscape
         {
             FEKit.Bouncy(T("GAME", 150, FEKit.Oops, 120, -70), 0f);
             FEKit.Bouncy(T("OVER", 150, Color.white, 120, -215), 0.8f);
-            T("Ops! As máquinas pegaram você. Vamos tentar de novo?", 32, FEKit.Dim, 126, -385, FontStyle.Normal);
+            T("Você não pode desistir!", 32, FEKit.Dim, 126, -385, FontStyle.Normal);
             Line(126, -435);
             B("TENTAR DE NOVO", 56, 120, -490, GameFlow.Retry);
             B("MENU PRINCIPAL", 56, 120, -575, GameFlow.GoMenu);

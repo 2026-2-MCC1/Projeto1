@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 // Faz o mob usar as animações: anda de um lado para o outro, ataca quando o jogador chega perto
 // e morre quando o jogador gira ao lado dele ou pula em cima.
+// Quando ataca, machuca o jogador (tira uma vida; se as vidas acabarem, abre o Game Over).
 [RequireComponent(typeof(Animator))]
 public class MobPatrulha : MonoBehaviour
 {
@@ -21,6 +22,18 @@ public class MobPatrulha : MonoBehaviour
     public float distanciaAtaque = 2.2f;
     public float intervaloAtaque = 2.2f;
 
+    // Dano: marque para o ataque tirar uma vida do jogador
+    public bool causarDano = true;
+
+    // Segundos entre o início da animação de ataque e o golpe acertar (ajuste pela animação)
+    public float atrasoDano = 0.6f;
+
+    // Folga extra de distância na hora do golpe (o jogador ainda leva dano se recuar um pouco)
+    public float folgaDano = 0.5f;
+
+    // Escreve no Console o que acontece com o dano (desmarque quando tudo estiver funcionando)
+    public bool mostrarLogs = true;
+
     // Tecla do giro do jogador e distância em que ele alcança o mob
     public Key teclaGiro = Key.Q;
     public float distanciaGiro = 2f;
@@ -28,6 +41,7 @@ public class MobPatrulha : MonoBehaviour
     private Animator animator;
     private CapsuleCollider colisor;
     private CharacterController jogador;
+    private RespawnJogador respawnJogador;
     private Vector3 centro;
 
     // Lado para onde está andando: 1 ou -1
@@ -51,6 +65,24 @@ public class MobPatrulha : MonoBehaviour
         if (movimento != null)
         {
             jogador = movimento.GetComponent<CharacterController>();
+
+            // Procura o RespawnJogador no mesmo objeto (ou no pai)
+            respawnJogador = movimento.GetComponentInParent<RespawnJogador>();
+        }
+
+        // Se não achou ali, procura em qualquer lugar da cena
+        if (respawnJogador == null)
+        {
+            respawnJogador = FindFirstObjectByType<RespawnJogador>();
+        }
+
+        if (jogador == null)
+        {
+            Debug.LogWarning("[MobPatrulha] Não achei o jogador (PlayerMovement). O mob não vai atacar.", this);
+        }
+        if (respawnJogador == null)
+        {
+            Debug.LogWarning("[MobPatrulha] Não achei o RespawnJogador na cena. O mob não vai causar dano.", this);
         }
     }
 
@@ -122,6 +154,58 @@ public class MobPatrulha : MonoBehaviour
         {
             animator.SetTrigger("Atacar");
             esperaAtaque = intervaloAtaque;
+
+            // Quando o golpe acertar, verifica se o jogador ainda está ao alcance
+            if (causarDano == true)
+            {
+                Invoke(nameof(CausarDano), atrasoDano);
+            }
+            else if (mostrarLogs == true)
+            {
+                Debug.Log("[MobPatrulha] Atacou, mas 'Causar Dano' está DESMARCADO no Inspector.", this);
+            }
+        }
+    }
+
+    // Machuca o jogador se ele ainda estiver ao alcance quando o golpe acerta
+    void CausarDano()
+    {
+        if (morto || jogador == null)
+        {
+            return;
+        }
+
+        // Tenta achar o RespawnJogador de novo, caso não tenha achado no Start
+        if (respawnJogador == null)
+        {
+            respawnJogador = FindFirstObjectByType<RespawnJogador>();
+        }
+
+        if (respawnJogador == null)
+        {
+            Debug.LogWarning("[MobPatrulha] O golpe acertou, mas não existe RespawnJogador na cena. Adicione o componente no Player.", this);
+            return;
+        }
+
+        Vector3 paraJogador = jogador.transform.position - transform.position;
+        float altura = Mathf.Abs(paraJogador.y);
+        paraJogador.y = 0f;
+        float distancia = paraJogador.magnitude;
+
+        if (distancia <= distanciaAtaque + folgaDano && altura <= 2.5f)
+        {
+            if (mostrarLogs == true)
+            {
+                Debug.Log("[MobPatrulha] Golpe acertou! Distância: " + distancia.ToString("F2") + ". Chamando LevarDano().", this);
+            }
+
+            // Tira uma vida e volta ao checkpoint; se as vidas acabarem, abre o Game Over
+            respawnJogador.TomarDano();
+        }
+        else if (mostrarLogs == true)
+        {
+            Debug.Log("[MobPatrulha] Golpe errou: o jogador estava longe (distância " + distancia.ToString("F2") +
+                      ", altura " + altura.ToString("F2") + ").", this);
         }
     }
 
@@ -201,6 +285,10 @@ public class MobPatrulha : MonoBehaviour
         }
 
         morto = true;
+
+        // Se o mob morrer antes do golpe acertar, cancela o dano que estava agendado
+        CancelInvoke(nameof(CausarDano));
+
         colisor.enabled = false;
         animator.SetFloat("Velocidade", 0f);
         animator.SetTrigger("Morrer");

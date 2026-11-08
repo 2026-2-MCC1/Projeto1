@@ -1,114 +1,116 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Velocidade do jogador, sempre a mesma, como no Crash
+    // Velocidade do jogador
     public float velocidadeAndar = 6.5f;
 
     // Força aplicada no pulo
     public float forcaPulo = 5f;
 
-    // Valor usado para simular a gravidade
+    // Gravidade
     public float gravidade = -9.8f;
 
-    // Velocidade com que o jogador vira para a direção do movimento, em graus por segundo
+    // Velocidade de giro
     public float velocidadeGiro = 540f;
 
-    // Rapidez com que o jogador ganha e perde velocidade
+    // Aceleração
     public float aceleracao = 30f;
 
-    // Guarda a velocidade vertical do jogador
+    // Velocidade vertical
     private float velocidadeVertical = 0f;
 
-    // Guarda a velocidade horizontal atual, que muda aos poucos
+    // Velocidade horizontal
     private Vector3 velocidadeHorizontal = Vector3.zero;
 
-    // Referência ao CharacterController do jogador
+    // CharacterController
     private CharacterController controller;
 
-    // Referência à câmera principal
+    // Câmera principal
     private Transform cameraTransform;
+
+    // Informa se o jogador está recebendo um empurrão
+    private bool recebendoEmpurrao = false;
 
     void Start()
     {
-        // Busca o CharacterController do jogador
         controller = GetComponent<CharacterController>();
 
-        // Guarda a posição e rotação da câmera principal
-        cameraTransform = Camera.main.transform;
+        if (Camera.main != null)
+            cameraTransform = Camera.main.transform;
+        else
+            Debug.LogError("Câmera principal não encontrada!");
+    }
+
+    // Chamado pelo RespawnJogador durante o empurrão
+    public void DefinirEmpurrao(bool estado)
+    {
+        recebendoEmpurrao = estado;
     }
 
     void Update()
     {
-        // Valores usados para controlar o movimento
+        // Impede o movimento normal durante o empurrão
+        if (recebendoEmpurrao)
+            return;
+
+        if (controller == null || cameraTransform == null)
+            return;
+
         float x = 0f;
         float z = 0f;
 
         // Movimento para frente
         if (Keyboard.current.wKey.isPressed)
-        {
             z = 1f;
-        }
 
         // Movimento para trás
         if (Keyboard.current.sKey.isPressed)
-        {
             z = -1f;
-        }
 
-        // Movimento para a esquerda
+        // Movimento para esquerda
         if (Keyboard.current.aKey.isPressed)
-        {
             x = -1f;
-        }
 
-        // Movimento para a direita
+        // Movimento para direita
         if (Keyboard.current.dKey.isPressed)
-        {
             x = 1f;
-        }
 
         // Mantém o jogador próximo ao chão
         if (controller.isGrounded && velocidadeVertical < 0)
-        {
             velocidadeVertical = -2f;
-        }
 
-        // Permite o pulo somente quando o jogador está no chão
+        // Pulo
         if (Keyboard.current.spaceKey.wasPressedThisFrame && controller.isGrounded)
-        {
             velocidadeVertical = forcaPulo;
-        }
 
-        // Aplica a gravidade ao jogador
-        velocidadeVertical = velocidadeVertical + gravidade * Time.deltaTime;
+        // Gravidade
+        velocidadeVertical += gravidade * Time.deltaTime;
 
-        // Pega as direções da câmera
+        // Direções da câmera
         Vector3 frenteCamera = cameraTransform.forward;
         Vector3 direitaCamera = cameraTransform.right;
 
-        // Remove o movimento vertical da direção da câmera
         frenteCamera.y = 0f;
         direitaCamera.y = 0f;
 
-        // Normaliza as direções
         frenteCamera.Normalize();
         direitaCamera.Normalize();
 
-        // Calcula a direção do movimento em relação à câmera
+        // Movimento relativo à câmera
         Vector3 direcao = frenteCamera * z + direitaCamera * x;
 
-        // Evita que o movimento diagonal seja mais rápido
+        // Evita velocidade diagonal maior
         if (direcao.magnitude > 1f)
-        {
             direcao.Normalize();
-        }
 
-        // Faz o jogador virar aos poucos para a direção em que está andando
+        // Rotação do jogador
         if (direcao != Vector3.zero)
         {
             Quaternion rotacaoAlvo = Quaternion.LookRotation(direcao);
+
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 rotacaoAlvo,
@@ -116,19 +118,18 @@ public class PlayerMovement : MonoBehaviour
             );
         }
 
-        // Aproxima a velocidade atual da velocidade desejada, sem mudança brusca
+        // Aceleração horizontal
         velocidadeHorizontal = Vector3.MoveTowards(
             velocidadeHorizontal,
             direcao * velocidadeAndar,
             aceleracao * Time.deltaTime
         );
 
-        // Junta o movimento horizontal com o movimento vertical
+        // Movimento completo
         Vector3 movimento =
             velocidadeHorizontal +
             Vector3.up * velocidadeVertical;
 
-        // Move o jogador
         controller.Move(movimento * Time.deltaTime);
     }
 }

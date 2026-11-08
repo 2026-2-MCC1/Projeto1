@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 // Quebra a caixa em pedaços com a própria textura quando o jogador gira perto dela ou pula em cima.
 // Outros scripts também podem chamar Destruir() diretamente.
+// Caixas explosivas (Plutonita) empurram o jogador para trás e tiram uma vida se ele estiver no raio.
 public class CaixaDestrutivel : MonoBehaviour
 {
     // Soltar rocklets ao quebrar uma caixa
-    public GameObject[] rockletsParaSoltar; 
+    public GameObject[] rockletsParaSoltar;
     public int minimoRocklets = 2;
     public int maximoRocklets = 5;
 
@@ -32,13 +33,22 @@ public class CaixaDestrutivel : MonoBehaviour
     public float raioExplosao = 2f;
     public Material materialBrilho;
 
+    // Empurrão que a explosão dá no jogador
+    // (distância aproximada = força x duração / 2, então 7 x 0,25 / 2 = cerca de 0,9 m)
+    public float forcaEmpurrao = 7f;
+    public float duracaoEmpurrao = 0.25f;
+
     // Guarda se a caixa já começou a ser destruída
     private bool destruida = false;
+
+    // Centro da explosão, guardado antes do colisor ser desligado
+    private Vector3 centroExplosao;
 
     private Renderer rendererCaixa;
     private Collider colisorCaixa;
     private CharacterController jogador;
     private InventarioJogador inventario;
+    private RespawnJogador respawnJogador;
 
     // Dados de cada pedaço enquanto ele voa
     private class Pedaco
@@ -61,6 +71,13 @@ public class CaixaDestrutivel : MonoBehaviour
         {
             inventario = movimento.GetComponent<InventarioJogador>();
             jogador = movimento.GetComponent<CharacterController>();
+            respawnJogador = movimento.GetComponentInParent<RespawnJogador>();
+        }
+
+        // Se não achou junto do PlayerMovement, procura em qualquer lugar da cena
+        if (respawnJogador == null)
+        {
+            respawnJogador = FindFirstObjectByType<RespawnJogador>();
         }
     }
 
@@ -101,6 +118,7 @@ public class CaixaDestrutivel : MonoBehaviour
             Destruir();
         }
     }
+
     void SoltarRocklets()
     {
         if (rockletsParaSoltar == null || rockletsParaSoltar.Length == 0) return;
@@ -128,6 +146,9 @@ public class CaixaDestrutivel : MonoBehaviour
 
         destruida = true;
         SoltarRocklets();
+
+        // Guarda o centro da explosão ANTES de desligar o colisor
+        centroExplosao = colisorCaixa.bounds.center;
 
         // Libera a passagem na hora, antes mesmo dos pedaços aparecerem
         colisorCaixa.enabled = false;
@@ -428,12 +449,29 @@ public class CaixaDestrutivel : MonoBehaviour
 
     void ExplodirVizinhas()
     {
-        foreach (Collider outro in Physics.OverlapSphere(colisorCaixa.bounds.center, raioExplosao))
+        foreach (Collider outro in Physics.OverlapSphere(centroExplosao, raioExplosao))
         {
-            // jogador dentro da explosão perde um casco
-            if (outro == jogador && inventario != null)
+            // Jogador dentro da explosão: é empurrado para trás e perde UMA vida.
+            // Ele continua onde está; só se essa for a última vida abre o Game Over.
+            if (outro == jogador)
             {
-                inventario.PerderVida();
+                if (respawnJogador != null)
+                {
+                    // Empurra para longe do centro da explosão
+                    Vector3 direcao = jogador.transform.position - centroExplosao;
+                    direcao.y = 0f;
+                    if (direcao.sqrMagnitude < 0.01f)
+                    {
+                        direcao = -jogador.transform.forward;   // se estava no centro, empurra para trás
+                    }
+                    respawnJogador.Empurrar(direcao, forcaEmpurrao, duracaoEmpurrao);
+
+                    respawnJogador.TomarDano();
+                }
+                else if (inventario != null)
+                {
+                    inventario.PerderVida();   // plano B, sem Game Over
+                }
             }
 
             CaixaDestrutivel caixa = outro.GetComponent<CaixaDestrutivel>();
