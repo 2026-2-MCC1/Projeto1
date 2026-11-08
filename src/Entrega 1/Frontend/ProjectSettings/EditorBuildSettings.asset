@@ -6,11 +6,41 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FactoryEscape/MainMenu.unity
+    guid: 632f4bc3f203d514991ea1a011aec06e
+  - enabled: 1
     path: Assets/Scenes/MenuOpcoes.unity
     guid: b8f7fc5054a97bf4987e6278bbb1bb21
   - enabled: 1
     path: Assets/Scenes/W fase 3 desatualizado.unity
     guid: 565380b95f83b1f409e3c430469f25b4
+  - enabled: 1
+    path: Assets/Scenes/FactoryEscape/Opcoes.unity
+    guid: 5ad7f1e1d30a19c4e81d8a3094f8920a
+  - enabled: 1
+    path: Assets/Scenes/FactoryEscape/Creditos.unity
+    guid: 08075b85f254a3845bbacbeaa9790609
+  - enabled: 1
+    path: Assets/Scenes/FactoryEscape/Tutorial.unity
+    guid: de1ac8d8f64886b4fb1869d2ebc846ac
+  - enabled: 1
+    path: Assets/Scenes/FactoryEscape/GameOver.unity
+    guid: 329c2c6576847794abf06b2a88d5b593
+  - enabled: 1
+    path: Assets/Scenes/FactoryEscape/Vitoria.unity
+    guid: 0c092811700536f44ae26dd8ac8dc88c
+  - enabled: 1
+    path: Assets/Scenes/FactoryEscape/FimDeJogo.unity
+    guid: 80248fe5871519641a152c68cd028eb4
+  - enabled: 1
+    path: Assets/Scenes/Fabrica_Parte1.unity
+    guid: 089a9b995800c3f419d1912bfb7c7b88
+  - enabled: 1
+    path: Assets/Scenes/Fabrica_Parte2.unity
+    guid: 5932ac44d6f8821439a248877034d15e
+  - enabled: 1
+    path: Assets/Scenes/Fabrica_Parte3.unity
+    guid: 727579054d11e5043a81aeddb386f802
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

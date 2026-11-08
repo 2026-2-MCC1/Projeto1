@@ -1,3 +1,4 @@
+using FactoryEscape;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -81,8 +82,8 @@ public class RespawnJogador : MonoBehaviour
             if (inventario.Vidas <= 0)
             {
                 fimDeJogo = true;
-                MostrarMensagem("Suas vidas acabaram! Recomeçando a fase...");
-                Invoke("ReiniciarFase", 2f);
+                MostrarMensagem("Suas vidas acabaram!");
+                Invoke("IrParaGameOver", 2f);
             }
         }
     }
@@ -120,9 +121,10 @@ public class RespawnJogador : MonoBehaviour
         }
     }
 
-    void ReiniciarFase()
+    void IrParaGameOver()
     {
-        // Carrega a cena atual de novo: vidas, Rocklets e checkpoints voltam ao começo.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Abre a tela de Game Over. O botão "Tentar de novo" recarrega a fase,
+        // e vidas, Rocklets e checkpoints voltam ao começo.
+        GameFlow.GameOver();
     }
 }
