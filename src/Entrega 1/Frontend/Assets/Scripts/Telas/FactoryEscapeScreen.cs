@@ -6,24 +6,20 @@ namespace FactoryEscape
 {
     public enum FEScreen { Menu, Options, Credits, Tutorial, GameOver, Victory, End }
 
-    // =====================================================================
-    //  FactoryEscapeScreen - coloque UM destes em cada cena de tela
-    //  e escolha qual tela ela é no campo "Screen".
-    //  A interface, o fundo animado e os sons são criados sozinhos.
-    // =====================================================================
+    // FactoryEscapeScreen - coloque UM destes em cada cena de tela
     public class FactoryEscapeScreen : MonoBehaviour
     {
         [Header("Qual tela é esta cena?")]
         public FEScreen screen = FEScreen.Menu;
 
         [Header("Visual (opcional)")]
-        public Texture backgroundTexture;   // sua imagem de fundo (Wrap Mode = Repeat)
-        public Font customFont;             // dica: uma fonte arredondada (ex.: Fredoka)
+        public Texture backgroundTexture; // sua imagem de fundo (Wrap Mode = Repeat)
+        public Font customFont; // dica: uma fonte arredondada (ex.: Fredoka)
         public Vector2 scrollSpeed = new Vector2(0.03f, 0.004f);
         public int bubbleCount = 16;
 
         [Header("Sons (opcional: se vazio, o PLIM é gerado por código)")]
-        public AudioClip music;             // música de fundo (continua entre as cenas)
+        public AudioClip music; // música de fundo (continua entre as cenas)
         public AudioClip clickSound;
         public AudioClip hoverSound;
         public AudioClip victorySound;
@@ -43,15 +39,17 @@ namespace FactoryEscape
         [TextArea(4, 12)]
         public string creditsText =
             "FACTORY ESCAPE\n\n" +
-            "Programação ...... SEU NOME\n" +
-            "Arte ............. SEU NOME\n" +
-            "Som .............. SEU NOME\n\n" +
-            "Projeto acadêmico ambientado em uma fábrica da Arcor.";
+            "Desenvolvido por\n\n" +
+            "André Ananias\n" +
+            "Antonie Gabriel\n" +
+            "João Vitor\n" +
+            "Karine Vicente\n\n" +
+            "Projeto acadêmico de Ciência da Computação (Fecap)\n" +
+            "ambientado em uma fábrica da Arcor.";
 
         Transform root;
         Text volumeValue, volumeBar;
 
-        // =================================================================
         void Awake()
         {
             Time.timeScale = 1f;
@@ -59,6 +57,7 @@ namespace FactoryEscape
             FEKit.Init(customFont);
             FESfx.SetOverrides(clickSound, hoverSound, victorySound, gameOverSound, sfxVolume);
             FEKit.EnsureEventSystem();
+            FEKit.LiberarMouse();
 
             var canvas = FEKit.CreateCanvas("FactoryEscapeCanvas", 100);
             canvas.transform.SetParent(transform, false);
@@ -87,13 +86,14 @@ namespace FactoryEscape
 
         void Update()
         {
+            // Garante o mouse livre mesmo se algo da cena anterior tentar travar de novo
+            if (Cursor.lockState != CursorLockMode.None) FEKit.LiberarMouse();
+
             if (screen == FEScreen.Tutorial && FEKit.ConfirmPressed())
                 GameFlow.StartLevel();
         }
 
-        // =================================================================
-        //  TELAS
-        // =================================================================
+        // TELAS
         void BuildMenu()
         {
             FEKit.Bouncy(T("FACTORY", 150, Color.white, 120, -70), 0f);
@@ -175,14 +175,12 @@ namespace FactoryEscape
             Line(126, -205);
         }
 
-        // =================================================================
-        //  VOLUME
-        // =================================================================
+        // VOLUME
         void ChangeVolume(float delta)
         {
             float v = Mathf.Clamp01(Mathf.Round((GameFlow.Volume + delta) * 10f) / 10f);
             GameFlow.Volume = v;
-            FESfx.Play(FESfx.Click, 0.8f + v * 0.8f);   // plim mais agudo quanto maior o volume
+            FESfx.Play(FESfx.Click, 0.8f + v * 0.8f); // plim mais agudo quanto maior o volume
             RefreshVolume();
         }
 
@@ -195,9 +193,7 @@ namespace FactoryEscape
                              "<color=#3A5F94>" + new string('|', 20 - filled) + "</color>";
         }
 
-        // =================================================================
-        //  ATALHOS DE CONSTRUÇÃO (x e y em unidades de 1920x1080, y negativo = para baixo)
-        // =================================================================
+        // ATALHOS DE CONSTRUÇÃO (x e y em unidades de 1920x1080, y negativo = para baixo)
         Text T(string s, int size, Color c, float x, float y,
                FontStyle st = FontStyle.Bold, float w = 900f, bool wrap = false)
         {

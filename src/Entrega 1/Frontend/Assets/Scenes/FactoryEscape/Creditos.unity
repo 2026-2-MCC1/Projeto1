@@ -163,9 +163,7 @@ MonoBehaviour:
     ........ E\n\nSUA MISS\xC3O: ache as chaves, desvie das m\xE1quinas\ne chegue
     \xE0 sa\xEDda antes que o alarme toque!\nS\xE3o 3 fases. Consegue escapar de
     todas?"
-  creditsText: "FACTORY ESCAPE\n\nPrograma\xE7\xE3o ...... SEU NOME\nArte .............
-    SEU NOME\nSom .............. SEU NOME\n\nProjeto acad\xEAmico ambientado em uma
-    f\xE1brica da Arcor."
+  creditsText: "FACTORY ESCAPE\n\nDesenvolvido por\n\nAndr\xE9 Ananias\nAntonie Gabriel\nJo\xE3o Vitor\nKarine Vicente\n\nProjeto acad\xEAmico de Ci\xEAncia da Computa\xE7\xE3o (Fecap)\nambientado em uma f\xE1brica da Arcor."
 --- !u!4 &43764859
 Transform:
   m_ObjectHideFlags: 0
