@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/FactoryEscape/MainMenu.unity
     guid: 632f4bc3f203d514991ea1a011aec06e
   - enabled: 1
-    path: Assets/Scenes/MenuOpcoes.unity
-    guid: b8f7fc5054a97bf4987e6278bbb1bb21
-  - enabled: 1
-    path: Assets/Scenes/W fase 3 desatualizado.unity
-    guid: 565380b95f83b1f409e3c430469f25b4
-  - enabled: 1
     path: Assets/Scenes/FactoryEscape/Opcoes.unity
     guid: 5ad7f1e1d30a19c4e81d8a3094f8920a
   - enabled: 1

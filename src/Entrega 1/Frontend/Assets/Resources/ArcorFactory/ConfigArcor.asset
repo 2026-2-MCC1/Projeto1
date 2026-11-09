@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b59dfeb5c6d4ad43913f9742efadc2b, type: 3}
+  m_Name: ConfigArcor
+  m_EditorClassIdentifier: Assembly-CSharp::ArcorFactory.ConfigArcor
+  fonte: {fileID: 11400000, guid: ae360647400fe024292b2bbc355b12dc, type: 2}
+  painel: {fileID: 21300000, guid: d7938f59e9130144c864537bcf3b447c, type: 3}
+  aba: {fileID: 21300000, guid: 911f1837f54eeac49853eee7fc51a6f7, type: 3}
+  faixa: {fileID: 21300000, guid: 5a1d4f8426fe2fc47a5994a38d1d310a, type: 3}
+  circulo: {fileID: 21300000, guid: 30a9c20932f004342897486b23e46cc3, type: 3}
+  brilho: {fileID: 21300000, guid: 97a4999a1322d9b4eb34f0c2cfd248ec, type: 3}
+  particulaAditiva: {fileID: 2100000, guid: e030a176c518b704a9a62dd90d53af48, type: 2}
+  particulaSuave: {fileID: 2100000, guid: 7c128dc310c76974e868e68f5195c2fa, type: 2}
+  particulaEstrela: {fileID: 2100000, guid: a827f96c8ed221344915634a562b47ac, type: 2}
+  sombraJogador: {fileID: 2100000, guid: c075a6c0036ecaf4fb171bc8202ca775, type: 2}
+  estrelaCheia: {fileID: 21300000, guid: 6cffb906c87d44d4bb2ae64d69c73acd, type: 3}
+  estrelaVazia: {fileID: 21300000, guid: 3c1c451f51e63904fb837d33c182a458, type: 3}
+  raios: {fileID: 21300000, guid: d18220a44a9707748bf2336cc67b1a90, type: 3}
+  confete: {fileID: 21300000, guid: c8370a3f533408745a922d85de99c488, type: 3}
+  cartao: {fileID: 21300000, guid: 726011907357cdc4eab20e6ecd89927d, type: 3}
+  cartaoBorda: {fileID: 21300000, guid: d39ebd1352c5ea548b7a05bd83eff62f, type: 3}
+  rocklets:
+  - {fileID: 5931092011889959229, guid: bc197f1aa19817c4aa0c5810b81c27c7, type: 3}
+  - {fileID: 8829217577706902700, guid: f8f977f54014c71499e996e7d1958d4a, type: 3}
+  - {fileID: 3725927610699793285, guid: e9a0cd607fa6d6240ba74a63d0e9db45, type: 3}
+  - {fileID: 1802309828262342435, guid: 75b5d477d51458c4798d6b3e27097dad, type: 3}
+  - {fileID: 2977259025599438332, guid: 07d9fe54814fc7641938b5e6dfca3bf0, type: 3}

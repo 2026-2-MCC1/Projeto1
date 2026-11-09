@@ -1110,6 +1110,8 @@ MonoBehaviour:
   intervaloAtaque: 2.2
   teclaGiro: 31
   distanciaGiro: 2
+  atrasoGolpe: 0.45
+  efeitoAtaque: {fileID: 4912621426499067920, guid: ef7470e94d132ab44b98e54f5dafe964, type: 3}
 --- !u!1 &8966057477190290791
 GameObject:
   m_ObjectHideFlags: 0

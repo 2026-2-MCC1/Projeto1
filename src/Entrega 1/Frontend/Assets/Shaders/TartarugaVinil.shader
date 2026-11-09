@@ -9,6 +9,7 @@ Shader "Arcor/Tartaruga Vinil"
         _Preenchimento ("Preenchimento", Range(0, 1)) = 0.3
         _CorRecorte ("Cor do recorte", Color) = (1, 0.9, 0.75, 1)
         _ForcaRecorte ("Força do recorte", Range(0, 2)) = 0.35
+        _CorPiscar ("Cor do pisca (alpha = força)", Color) = (1, 1, 1, 0)
     }
 
     SubShader
@@ -42,6 +43,7 @@ Shader "Arcor/Tartaruga Vinil"
                 float _Preenchimento;
                 float4 _CorRecorte;
                 float _ForcaRecorte;
+                float4 _CorPiscar;
             CBUFFER_END
 
             struct Entrada
@@ -115,6 +117,9 @@ Shader "Arcor/Tartaruga Vinil"
                 // Recorte nas bordas para destacar a silhueta
                 float fresnel = pow(saturate(1.0 - dot(n, v)), 3.0);
                 cor.rgb += _CorRecorte.rgb * albedo * fresnel * _ForcaRecorte;
+
+                // Pisca de dano/carga: mistura a cor por cima (usado pelos scripts via MaterialPropertyBlock)
+                cor.rgb = lerp(cor.rgb, _CorPiscar.rgb, _CorPiscar.a);
 
                 cor.rgb = MixFog(cor.rgb, i.fog);
                 cor.a = 1;
