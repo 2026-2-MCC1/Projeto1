@@ -76,8 +76,28 @@ public class InventarioJogador : MonoBehaviour
     private MaterialPropertyBlock bloco;
     private CameraCrash cameraJogo;
 
+    // Ao concluir a fase o jogador congela: sem mover, sem dano, sem Game Over
+    public static bool Congelado;
+
+    public static void CongelarJogador()
+    {
+        InventarioJogador inv = FindFirstObjectByType<InventarioJogador>();
+        if (inv != null) inv.Congelar();
+    }
+
+    public void Congelar()
+    {
+        Congelado = true;
+        CancelInvoke(nameof(IrParaGameOver));
+        invencivel = 99999f;
+        if (movimento != null) movimento.enabled = false;
+        ArcorFactory.AtaqueJogador ataque = GetComponent<ArcorFactory.AtaqueJogador>();
+        if (ataque != null) ataque.enabled = false;
+    }
+
     void Awake()
     {
+        Congelado = false;
         vidas = vidasIniciais;
         movimento = GetComponent<PlayerMovement>();
         animadorTartaruga = GetComponentInChildren<TartarugaAnimador>();
@@ -209,7 +229,7 @@ public class InventarioJogador : MonoBehaviour
     // origem = de onde veio o golpe, para empurrar a tartaruga para o lado contrário
     public void PerderVida(Vector3 origem)
     {
-        if (vidas <= 0 || invencivel > 0f)
+        if (Congelado || vidas <= 0 || invencivel > 0f)
         {
             return;
         }
@@ -291,6 +311,7 @@ public class InventarioJogador : MonoBehaviour
 
     void IrParaGameOver()
     {
+        if (Congelado) return;
         // Tela de Game Over: "Tentar de novo" recarrega a fase do começo
         FactoryEscape.GameFlow.GameOver();
     }

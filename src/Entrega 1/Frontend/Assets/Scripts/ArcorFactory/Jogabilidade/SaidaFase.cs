@@ -83,6 +83,7 @@ namespace ArcorFactory
             }
 
             usado = true;
+            InventarioJogador.CongelarJogador();
             HUDJogo hud = FindFirstObjectByType<HUDJogo>();
             if (hud != null) hud.PararTempo();
             Efeitos.Confete(transform.position + Vector3.up * 2f, 80, 1.4f);

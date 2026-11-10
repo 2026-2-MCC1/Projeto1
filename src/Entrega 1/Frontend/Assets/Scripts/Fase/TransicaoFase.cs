@@ -26,6 +26,7 @@ public class TransicaoFase : MonoBehaviour
         }
 
         usado = true;
+        InventarioJogador.CongelarJogador();
 
         HUDJogo hud = FindFirstObjectByType<HUDJogo>();
         if (hud != null)

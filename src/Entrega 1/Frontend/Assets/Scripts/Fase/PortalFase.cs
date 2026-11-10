@@ -99,6 +99,7 @@ public class PortalFase : MonoBehaviour
         else
         {
             usado = true;
+            InventarioJogador.CongelarJogador();
             if (hud != null)
             {
                 hud.PararTempo();

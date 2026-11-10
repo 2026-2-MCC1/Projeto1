@@ -49,6 +49,7 @@ public class RespawnJogador : MonoBehaviour
 
     void Update()
     {
+        if (InventarioJogador.Congelado) return;
         if (transform.position.y < limiteQueda)
         {
             if (quedaTiraVida == true)
