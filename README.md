@@ -77,8 +77,6 @@ A versão executável para Windows está em `src/Entrega 2/Frontend/Executáveis
 2. Abra a pasta `src/Entrega 2/Frontend/Executáveis`.
 3. Execute o arquivo `ArcorFactory.exe` (mantenha as pastas `ArcorFactory_Data`, `MonoBleedingEdge` e `D3D12` junto dele).
 
-A pasta `ArcorFactory_BurstDebugInformation_DoNotShip` é apenas de depuração e não é necessária para jogar.
-
 ## 💻 Configuração para Desenvolvimento
 
 
@@ -141,6 +139,21 @@ Para abrir e testar este projeto em sua máquina, você necessita da seguinte fe
 4. Clique no projeto para abri-lo no editor da Unity.
 5. Aguarde a importação dos *assets* e pacotes e pressione o botão de "Play" no topo da tela para testar.
 
+
+## 🎨 Créditos dos assets
+
+Assets de terceiros usados no jogo (pasta `Assets/ThirdParty` e `Assets/Resources/Fonts`):
+
+| Recurso | Autor | Onde foi usado |
+|---|---|---|
+| Low Poly Industrial Pack (`Donthrukat/Lowpolyindustrialpack`) | Donthrukat | Cenário industrial: barris, caixas, caixotes, tanques, tubulações, estantes, paletes e paredes. [Unity Asset Store](https://assetstore.unity.com/packages/3d/props/industrial/low-poly-industrial-pack-169683) |
+| Low Poly Industrial Pack Lite (`Tyuris/Low_Poly_Industrial_Pack_Lite`) | Tyuris | Passarelas (catwalks), silo, tanque horizontal, galpão, fornalha e empilhadeira |
+| Fredoka One | Milena Brandão (Google Fonts) | Fonte dos textos e menus (licença SIL Open Font License) |
+| Matcha Home | Khurasan | Fonte de títulos (distribuída como gratuita para uso pessoal e comercial) |
+| Super Waffles | Hadley Fisher | Fonte de destaques (distribuída para uso comercial) |
+| Unity Engine, URP, TextMesh Pro, Input System e ProBuilder | Unity Technologies | Motor e pacotes do projeto |
+
+As marcas e personagens inspirados na Arcor (7Belo, Plutonita, Poosh!, Chokko, Selo de Qualidade) pertencem à Arcor e são usados apenas em um projeto acadêmico da FECAP. Os demais recursos do jogo (modelos dos personagens e mobs, efeitos, interface, sons e músicas) foram feitos pela equipe, com o apoio das ferramentas de IA descritas na declaração de uso de IA do projeto.
 
 ## 📋 Licença/License
 <a href="https://github.com/2026-2-MCC1/Projeto1">Factory Escape</a> © 2026 by <a href="https://github.com/2026-2-MCC1/Projeto1">André Ananias, Antonie Gabriel, João Vitor e Karine Vicente</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
