@@ -50,9 +50,14 @@ namespace FactoryEscape
 
         public static string LevelName(int l)
         {
-            return (l >= 1 && l <= LevelNames.Length)
-                ? LevelNames[l - 1]
-                : "";
+            // Número de fase válido: devolve o nome do vetor LevelNames
+            if (l >= 1 && l <= LevelNames.Length)
+            {
+                return LevelNames[l - 1];
+            }
+
+            // Número inválido: devolve texto vazio
+            return "";
         }
 
         // FLUXO DO JOGO
