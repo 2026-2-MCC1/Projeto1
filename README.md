@@ -14,7 +14,7 @@
 
 
 <p align="center">
-<img src="imagens/banner_FactoryEscape.jpeg" alt="Banner Factory Escape" width="100%">
+<img src="imagens/banner_FactoryEscape.png" alt="Banner Factory Escape" width="100%">
 <br>
 Game by <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>,
 <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>,
@@ -88,31 +88,41 @@ O projeto está localizado em:
 
 `src/Entrega 1/Frontend`
 
-Para executar o projeto, abra a pasta pelo Unity Hub e execute a cena `Jogo` localizada em `Assets/Scenes`.
+Para executar o projeto, abra a pasta pelo Unity Hub e execute a cena `MainMenu` localizada em `Assets/Scenes` (ela leva ao tutorial e às três fases).
 
 ## 🎮 Progresso - Entrega 1
 
-Na Entrega 1 foi desenvolvida a primeira versão jogável de Factory Escape.
+Na Entrega 1 foi desenvolvida a versão jogável completa de Factory Escape, com menu, tutorial, três fases e telas de vitória e derrota.
 
 Funcionalidades implementadas:
 
-- Movimentação do jogador com WASD
-- Corrida utilizando Shift
-- Sistema de pulo
-- Câmera em terceira pessoa controlada pelo mouse
-- Obstáculos fixos e móveis
-- Obstáculos com movimento horizontal e vertical
+**Jogador e controles**
+- Movimentação com WASD e corrida com Shift
+- Pulo com *coyote time* (pequena tolerância para pular logo após sair da plataforma)
+- Ataque giratório da tartaruga para derrotar inimigos
+- Câmera em terceira pessoa controlada pelo mouse, com ajuste para não atravessar tetos e corredores
+- Sistema de vidas, dano e invencibilidade temporária
+- Respawn em caso de queda e checkpoint na fase 2
+- O jogador é congelado ao entrar no portal de saída, sem poder se mover, tomar dano ou cair em Game Over
+
+**Fases e jogabilidade**
+- Tutorial inicial
+- Três fases (`Fabrica_Parte1`, `Fabrica_Parte2` e `Fabrica_Parte3`) ligadas por portais de saída
+- Coleta de Rocklets com meta por fase (50, 30 e 110) exibida no objetivo da tela
+- Obstáculos fixos e móveis, com movimento horizontal e vertical
 - Área de parkour
-- Sistema de respawn em caso de queda
-- Sistema de baús interativos
-- Cartão de acesso escondido em um dos baús
-- Sistema de inventário para o cartão
-- Porta final que verifica se o jogador possui o cartão
-- Mensagens de interação na tela
-- Sistema de objetivos da fase
-- Cena principal do jogo
-- Cenas de Menu e Game Over
-- Scripts organizados e comentados
+- Baús interativos, cartão de acesso e porta final que verifica o cartão
+- Inimigos e efeitos visuais de ataque e dano
+
+**Telas e fluxo do jogo**
+- Menu principal, Opções, Créditos, Game Over, Vitória e Fim de Jogo
+- HUD com vidas, Rocklets e fase atual
+- Menu de pausa
+- Mensagens de interação e sistema de objetivos
+- Fluxo entre cenas controlado pela classe `GameFlow`
+
+**Código**
+- Scripts organizados em pastas em português (`Jogador`, `Fase`, `Telas`, entre outras) e comentados
 
 Para abrir e testar este projeto em sua máquina, você necessita da seguinte ferramenta:
 
