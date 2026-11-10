@@ -71,7 +71,13 @@ Há também 4 pastas que seguem da seguinte forma:
 
 ## 🛠 Instalação
 
-No momento, o projeto encontra-se em fase de desenvolvimento e ainda não possui versões executáveis (APK, EXE ou HTML) disponíveis para instalação ou download. 
+A versão executável para Windows está em `src/Entrega 2/Frontend/Executáveis`.
+
+1. Baixe ou clone o repositório.
+2. Abra a pasta `src/Entrega 2/Frontend/Executáveis`.
+3. Execute o arquivo `ArcorFactory.exe` (mantenha as pastas `ArcorFactory_Data`, `MonoBleedingEdge` e `D3D12` junto dele).
+
+A pasta `ArcorFactory_BurstDebugInformation_DoNotShip` é apenas de depuração e não é necessária para jogar.
 
 ## 💻 Configuração para Desenvolvimento
 
