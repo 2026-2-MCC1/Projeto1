@@ -128,15 +128,14 @@ Funcionalidades implementadas:
 - Fluxo entre cenas controlado pela classe `GameFlow`
 
 **Código**
-- Scripts organizados em pastas em português (`Jogador`, `Fase`, `Telas`, entre outras) e comentados
+- Scripts organizados em pastas em português (`Jogador`, `Fase`, `Telas`, entre outras)
 
 ### Entrega 2
 
-- Telas e cenas secundárias programadas: Menu principal, Opções, Créditos, Game Over, Vitória, Fim de Jogo e menu de pausa
-- Jogo finalizado, com as 3 fases ligadas por portais
-- Versão executável para Windows (`src/Entrega 2/Frontend/Executáveis`)
-- Documentos da entrega em `documentos/Entrega 2` (Algoritmos e Lógica de Programação e Ética e Pensamento Computacional)
-- README atualizado com a estrutura do projeto, as instruções de instalação e os créditos
+- Jogo finalizado, com as 3 fases ligadas por portais e todas as telas funcionando
+- Versão executável para Windows em `src/Entrega 2/Frontend/Executáveis`
+- Documentos da entrega em `documentos/Entrega 2`
+- README atualizado com estrutura de pastas, instalação e créditos
 
 ## 🎨 Créditos dos assets
 
