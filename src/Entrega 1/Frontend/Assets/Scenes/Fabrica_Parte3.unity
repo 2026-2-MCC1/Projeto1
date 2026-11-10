@@ -1917,6 +1917,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caixa_Plutonita
       objectReference: {fileID: 0}
+    - target: {fileID: 4821067391550218761, guid: eaa7b859e9dbe1546b7d5c02083ccea3, type: 3}
+      propertyPath: forcaEmpurrao
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821067391550218761, guid: eaa7b859e9dbe1546b7d5c02083ccea3, type: 3}
+      propertyPath: duracaoEmpurrao
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 7540780366963026677, guid: eaa7b859e9dbe1546b7d5c02083ccea3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.84765625
@@ -4908,6 +4916,10 @@ PrefabInstance:
     - target: {fileID: 1158568339530674978, guid: eaa7b859e9dbe1546b7d5c02083ccea3, type: 3}
       propertyPath: m_Name
       value: Caixa_Plutonita
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821067391550218761, guid: eaa7b859e9dbe1546b7d5c02083ccea3, type: 3}
+      propertyPath: forcaEmpurrao
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7540780366963026677, guid: eaa7b859e9dbe1546b7d5c02083ccea3, type: 3}
       propertyPath: m_LocalPosition.x

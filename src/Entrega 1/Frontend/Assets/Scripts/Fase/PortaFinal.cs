@@ -1,5 +1,7 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FactoryEscape;
 
 public class PortaFinal : MonoBehaviour
 {
@@ -15,42 +17,91 @@ public class PortaFinal : MonoBehaviour
     // Quantidade de Rocklets necessária para abrir a porta
     public int metaRocklets = 12;
 
-    // Guarda se o jogador estava perto da porta no frame anterior
-    private bool estavaPerto = false;
+    // Tempo entre abrir a porta e mudar de cena
+    public float atrasoVitoria = 0.5f;
 
-    // Controla se uma mensagem temporária está sendo exibida
+    // Som de porta abrindo
+    public AudioClip somPorta;
+
+    private bool estavaPerto = false;
     private bool mensagemTemporaria = false;
+    private bool concluida = false;
+
+    void Start()
+    {
+        // Procura automaticamente o jogador
+        if (jogador == null)
+        {
+            PlayerMovement movimento =
+                FindFirstObjectByType<PlayerMovement>();
+
+            if (movimento != null)
+            {
+                jogador = movimento.transform;
+            }
+            else
+            {
+                Debug.LogError(
+                    "PortaFinal: Jogador não encontrado!"
+                );
+
+                enabled = false;
+                return;
+            }
+        }
+
+        // Procura automaticamente a interface de mensagens
+        if (mensagemUI == null)
+        {
+            mensagemUI = FindFirstObjectByType<MensagemUI>();
+        }
+
+        if (mensagemUI == null)
+        {
+            Debug.LogWarning(
+                "PortaFinal: MensagemUI não encontrada!"
+            );
+        }
+    }
 
     void Update()
     {
-        // Calcula a distância entre o jogador e a porta
+        // Impede novas interações depois que a porta for aberta
+        if (concluida)
+            return;
+
+        if (jogador == null || mensagemUI == null)
+            return;
+
+        // Calcula a distância entre jogador e porta
         float distancia = Vector3.Distance(
             transform.position,
             jogador.position
         );
 
-        // Verifica se o jogador está perto da porta
         bool estaPerto = distancia <= distanciaInteracao;
 
-        // Mostra a mensagem de interação quando o jogador está perto
-        if (estaPerto == true && mensagemTemporaria == false)
+        // Mostra a mensagem de interação
+        if (estaPerto && mensagemTemporaria == false)
         {
-            mensagemUI.MostrarMensagem("Pressione E para usar o cartão");
+            mensagemUI.MostrarMensagem(
+                "Pressione E para usar o cartão"
+            );
 
-            // Se o jogador apertar E, tenta abrir a porta
-            if (Keyboard.current.eKey.wasPressedThisFrame)
+            // Verifica se o jogador apertou E
+            if (Keyboard.current != null &&
+                Keyboard.current.eKey.wasPressedThisFrame)
             {
                 TentarAbrir();
             }
         }
 
         // Limpa a mensagem quando o jogador se afasta
-        if (estaPerto == false && estavaPerto == true)
+        if (!estaPerto && estavaPerto)
         {
             mensagemUI.LimparMensagem();
         }
 
-        // Atualiza a informação de proximidade
         estavaPerto = estaPerto;
     }
 
@@ -60,45 +111,78 @@ public class PortaFinal : MonoBehaviour
         InventarioJogador inventario =
             jogador.GetComponent<InventarioJogador>();
 
-        // Verifica se o jogador possui o cartão de acesso
-        if (inventario.temCartao == false)
+        if (inventario == null)
         {
-            // Informa que o jogador ainda precisa encontrar o cartão
-            MostrarAviso("Você precisa encontrar o cartão de acesso!");
+            Debug.LogError(
+                "PortaFinal: InventarioJogador não encontrado!"
+            );
+            return;
         }
+
+        // Verifica se possui o cartão de acesso
+        if (!inventario.temCartao)
+        {
+            MostrarAviso(
+                "Você precisa encontrar o cartão de acesso!"
+            );
+        }
+        // Verifica a quantidade de Rocklets
         else if (inventario.Rocklets < metaRocklets)
         {
-            // Calcula quantos Rocklets ainda faltam
             int faltam = metaRocklets - inventario.Rocklets;
 
-            // Informa quantos Rocklets ainda faltam
-            MostrarAviso("Faltam " + faltam + " Rocklets para abrir a porta!");
+            MostrarAviso(
+                "Faltam " + faltam + " Rocklets para abrir a porta!"
+            );
         }
         else
         {
             // Informa que a fase foi concluída
-            mensagemUI.MostrarMensagem("Porta aberta! Fase concluída!");
+            mensagemUI.MostrarMensagem(
+                "Porta aberta! Fase concluída!"
+            );
 
-            // Desativa a porta
-            gameObject.SetActive(false);
+            concluida = true;
+
+            // Toca o som da porta
+            FESfx.Play(somPorta);
+
+            // Faz a porta desaparecer
+            foreach (Renderer r in GetComponentsInChildren<Renderer>())
+            {
+                r.enabled = false;
+            }
+
+            // Desativa os colisores da porta
+            foreach (Collider c in GetComponentsInChildren<Collider>())
+            {
+                c.enabled = false;
+            }
+
+            // Aguarda antes de abrir a tela correspondente
+            Invoke("IrParaVitoria", atrasoVitoria);
         }
+    }
+
+    void IrParaVitoria()
+    {
+        // Fases 1 e 2: abre a tela de Vitória.
+        // Fase 3: abre a tela de Fim de Jogo.
+        GameFlow.Victory();
     }
 
     void MostrarAviso(string aviso)
     {
-        // Impede que outra mensagem substitua o aviso imediatamente
         mensagemTemporaria = true;
 
-        // Mostra o aviso na tela
         mensagemUI.MostrarMensagem(aviso);
 
-        // Após 2 segundos, libera novamente a mensagem padrão da porta
+        // Libera novamente a mensagem padrão após 2 segundos
         Invoke("LiberarMensagem", 2f);
     }
 
     void LiberarMensagem()
     {
-        // Permite que a mensagem de interação volte a aparecer
         mensagemTemporaria = false;
     }
 }

@@ -159,10 +159,10 @@ MonoBehaviour:
   victorySound: {fileID: 0}
   gameOverSound: {fileID: 0}
   sfxVolume: 0.8
-  tutorialText: "MOVER ............ WASD / SETAS\nPULAR ............ ESPA\xC7O\nINTERAGIR
-    ........ E\n\nSUA MISS\xC3O: ache as chaves, desvie das m\xE1quinas\ne chegue
-    \xE0 sa\xEDda antes que o alarme toque!\nS\xE3o 3 fases. Consegue escapar de
-    todas?"
+  tutorialText: "MOVER ................. WASD\nPULAR .............. ESPA\xC7O\nINTERAGIR
+    ................... E\nQUEBRAR CAIXAS ...... Q\n\nSUA MISS\xC3O: ache as chaves,
+    desvie das m\xE1quinas\ne chegue \xE0 sa\xEDda antes que o alarme toque!\nS\xE3o
+    3 fases. Consegue escapar de todas?"
   creditsText: "FACTORY ESCAPE\n\nPrograma\xE7\xE3o ...... SEU NOME\nArte .............
     SEU NOME\nSom .............. SEU NOME\n\nProjeto acad\xEAmico ambientado em uma
     f\xE1brica da Arcor."
