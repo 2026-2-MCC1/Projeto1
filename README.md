@@ -6,7 +6,7 @@
 
 # Factory Escape.
 
-## ?Não sei?
+## Jogo de plataforma 3D inspirado na fábrica da Arcor
 
 ## Integrantes: <a href="https://www.linkedin.com/in/andrepczx/">André Ananias</a>, <a href="https://www.linkedin.com/in/antonie-gabriel-204b9533b/">Antonie Gabriel</a>, <a href="https://www.linkedin.com/in/jo%C3%A3o-ferreira-a9b71839b?utm_source=share_via&utm_content=profile&utm_medium=member_ios">João Vitor</a>, <a href="https://www.linkedin.com/in/karine-vicente-87311b231?utm_source=share_via&utm_content=profile&utm_medium=member_ios">Karine Vicente </a>
 
@@ -30,7 +30,7 @@ O **Factory Escape** é um jogo de plataforma 3D desenvolvido para aplicação p
 A experiência é projetada para ser curta, progressiva e dinâmica, sendo dividida em três fases principais: um tutorial inicial, um desafio de parkour utilizando embalagens gigantes da 7Belo e uma intensa sequência de fuga com câmera frontal. A premissa coloca o jogador em seu primeiro dia de trabalho em uma avaliação de rotina que acaba resultando em um desastre após o colapso da caldeira principal, exigindo que o protagonista pule, desvie e corra para sobreviver e escapar da fábrica.
 <br><br>
 
-## 🛠️ Estrutura de pastas
+## 📁 Estrutura de pastas
 
 ```text
 Raiz/
@@ -38,36 +38,37 @@ Raiz/
 │   ├── Entrega 1/
 │   │   ├── Algoritmos e Lógica de Programação/
 │   │   ├── Calculo 1/
+│   │   ├── Ética e Pensamento Computacional/
 │   │   ├── Jogos Digitais e Sistemas Digitais Interativos/
-│   │   ├── Projeto Interdisciplinar - Jogos Digitais/
-│   │   │   └── GDD.pdf
-│   │   └── Ética e Pensamento Computacional/
+│   │   └── Projeto Interdisciplinar - Jogos Digitais/   (GDD)
 │   └── Entrega 2/
-├── imagens/
+│       ├── Algoritmos e Lógica de Programação/
+│       ├── Cálculo 1/
+│       ├── Ética e Pensamento Computacional/
+│       ├── Jogos Digitais e Sistemas Digitais Interativos/
+│       └── Projeto Interdisciplinar - Jogos Digitais/
+├── imagens/                                             (capa e imagens do README)
 ├── src/
 │   ├── Entrega 1/
-│   │   ├── Backend/
-│   │   └── Frontend/
+│   │   └── Frontend/                                    (projeto Unity)
 │   │       ├── Assets/
+│   │       │   ├── Scenes/    (fases e telas)
+│   │       │   ├── Scripts/   (código C# do jogo)
+│   │       │   ├── Prefabs, Modelos, Materiais, Texturas, Animacoes
+│   │       │   ├── Audio, Resources, UI, Shaders
+│   │       │   └── ThirdParty/ (pacotes de terceiros)
 │   │       ├── Packages/
-│   │       ├── ProjectSettings/
-│   │       └── .gitignore
+│   │       └── ProjectSettings/
 │   └── Entrega 2/
+│       └── Frontend/
+│           └── Executáveis/                             (jogo para Windows)
 ├── .gitignore
 └── README.md
 ```
 
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre nosso projeto. O mesmo que você está lendo agora.
-
-Há também 4 pastas que seguem da seguinte forma:
-
-<b>documentos</b>: Toda a documentação estará nesta pasta.
-
-<b>executáveis</b>: Binários e executáveis do projeto devem estar nesta pasta.
-
-<b>imagens</b>: Imagens do sistema
-
-<b>src</b>: Pasta que contém o código fonte.
+- **documentos**: toda a documentação do projeto, separada por entrega e por disciplina.
+- **imagens**: imagens usadas no README.
+- **src**: código-fonte do jogo (projeto Unity em `Entrega 1/Frontend`) e a versão executável (`Entrega 2/Frontend/Executáveis`).
 
 ## 🛠 Instalação
 
@@ -77,26 +78,27 @@ A versão executável para Windows está em `src/Entrega 2/Frontend/Executáveis
 2. Abra a pasta `src/Entrega 2/Frontend/Executáveis`.
 3. Execute o arquivo `ArcorFactory.exe` (mantenha as pastas `ArcorFactory_Data`, `MonoBleedingEdge` e `D3D12` junto dele).
 
-## 💻 Configuração para Desenvolvimento
+## 💻 Configuração para desenvolvimento
 
-
-O projeto foi desenvolvido utilizando a Unity.
+O jogo foi desenvolvido na Unity, com programação em C# no Visual Studio.
 
 Para abrir e editar o projeto é necessário:
 
-- Unity 6.3 LTS
-- Unity Hub
-- Visual Studio ou outro editor compatível com C#
+- <a href="https://unity.com/download">Unity Hub</a> e Unity 6.3 LTS
+- Visual Studio (com suporte a desenvolvimento de jogos com Unity)
 
-O projeto está localizado em:
+Como rodar o projeto:
 
-`src/Entrega 1/Frontend`
+1. Clone este repositório.
+2. Abra o Unity Hub, clique em "Open" e selecione a pasta `src/Entrega 1/Frontend`.
+3. Aguarde a importação dos assets e pacotes.
+4. Abra a cena `MainMenu` em `Assets/Scenes/Telas` e clique em Play.
 
-Para executar o projeto, abra a pasta pelo Unity Hub e execute a cena `MainMenu` localizada em `Assets/Scenes` (ela leva ao tutorial e às três fases).
+## 🎮 Progresso do jogo
 
-## 🎮 Progresso - Entrega 1
+### Entrega 1
 
-Na Entrega 1 foi desenvolvida a versão jogável completa de Factory Escape, com menu, tutorial, três fases e telas de vitória e derrota.
+Primeira versão jogável de Factory Escape, já com menu, tutorial, três fases e telas de vitória e derrota.
 
 Funcionalidades implementadas:
 
@@ -128,17 +130,13 @@ Funcionalidades implementadas:
 **Código**
 - Scripts organizados em pastas em português (`Jogador`, `Fase`, `Telas`, entre outras) e comentados
 
-Para abrir e testar este projeto em sua máquina, você necessita da seguinte ferramenta:
+### Entrega 2
 
-- <a href="https://unity.com/download">Unity Hub / Unity Engine</a>
-
-**Como rodar o projeto:**
-1. Clone este repositório para o seu computador.
-2. Abra o Unity Hub.
-3. Clique em "Open" (Abrir) e navegue até a pasta `src` (ou a pasta específica do projeto Unity dentro dela) para adicioná-lo ao Hub.
-4. Clique no projeto para abri-lo no editor da Unity.
-5. Aguarde a importação dos *assets* e pacotes e pressione o botão de "Play" no topo da tela para testar.
-
+- Telas e cenas secundárias programadas: Menu principal, Opções, Créditos, Game Over, Vitória, Fim de Jogo e menu de pausa
+- Jogo finalizado, com as 3 fases ligadas por portais
+- Versão executável para Windows (`src/Entrega 2/Frontend/Executáveis`)
+- Documentos da entrega em `documentos/Entrega 2` (Algoritmos e Lógica de Programação e Ética e Pensamento Computacional)
+- README atualizado com a estrutura do projeto, as instruções de instalação e os créditos
 
 ## 🎨 Créditos dos assets
 
@@ -160,6 +158,5 @@ As marcas e personagens inspirados na Arcor (7Belo, Plutonita, Poosh!, Chokko, S
 
 ## 🎓 Referências
 
-Aqui estão as referências usadas no projeto.
-
 1. <https://github.com/fecaphub>
+2. Arcor: <https://www.arcor.com>
